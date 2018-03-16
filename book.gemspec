@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Sam. O'"]
   spec.email         = ["'samrey2018@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "The site is to scrape a book "
+  spec.description   = ""
   spec.homepage      = "http://books.toscrape.com/"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -33,6 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "nokogiri"
-  spec.add_development_dependency "rake", "~> 10.0"
 
 end
