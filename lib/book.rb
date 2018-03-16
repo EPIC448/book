@@ -1,5 +1,5 @@
 require "book/version"
-require './book/cli'
+require './cli'
 require './book/book_scraper'
 
 # this is execution folder.
