@@ -1,8 +1,8 @@
-require "book/version"
-require './cli'
-require './book/book_scraper'
+require_relative "book/version"
+require_relative './book/cli'
+require_relative './book/book_scraper'
 
 # this is execution folder.
  require 'open-uri'
- require 'nokogiri'
  require 'pry'
+ require 'nokogiri'
