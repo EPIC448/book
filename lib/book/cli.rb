@@ -9,6 +9,7 @@ class Book::Cli
     end
   end
 
+# google "how to output 10 items at a time from array ruby"
   def option
     input = nill
     while input != "exit"
