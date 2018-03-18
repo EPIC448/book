@@ -4,13 +4,14 @@ class Book::Book_scraper
 
     def self.scraper
       doc = Nokogiri::HTML(open("http://books.toscrape.com/"))
-      binding.pry
        doc.search(".product_pod").map do |container|
       read = self.new
-      read.genre
-      read.name
-      read.book_description
-      read.url
+      binding.pry
+      # read.genre = doc.search(".")
+      # read.name = doc.search(".").text.strip
+      # read.book_description = doc.search(".").text
+      # read.url = doc.search(".").text
+      # # price = p.price_color
       read
      end
     end
