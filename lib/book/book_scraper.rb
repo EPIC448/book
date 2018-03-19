@@ -1,18 +1,19 @@
 class Book::Book_scraper
 
-  attr_accessor :genre, :name, :book_description, :url
+  attr_accessor :genre, :name, :book_description, :product_information, :url
 
     def self.scraper
 
       doc = Nokogiri::HTML(open("http://books.toscrape.com/"))
        doc.search("div.page_inner").map do |container|
-        #  binding.pry
+         binding.pry
 
       read = self.new
       # read.genre = doc.search("li a").text
       # read.name = doc.search("h3 a").text
       # read.book_description = doc.search(".").text
-      # read.url = doc.search(".").text
+      #  read.product_information = doc.search (".").text
+      # read.url = "http://books.toscrape.com/"
       # # price = doc.search("p.price_color").text
       #read
      end
