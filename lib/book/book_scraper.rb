@@ -16,23 +16,22 @@ class Book::Book_scraper
     def self.scraper_homepage
       doc = Nokogiri::HTML(open("http://books.toscrape.com/"))
       doc.search("div.page_inner").map do |container|
-      read = self.new
-      read.genre = doc.search("li a").text
-      read.name = doc.search("h3 a").text
-      read.url = "http://books.toscrape.com/"
-      read.price = doc.search("p.price_color").text
-      binding.pry
-      read
+        list = self.new
+        list.genre = doc.search("li a").text
+        list.name = doc.search("h3 a").text
+        list.url = "http://books.toscrape.com/"
+        list.price = doc.search("p.price_color").text
+        list
      end
     end
 
     def self.scraper_single_page
       doc = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"))
-       doc.search("article.product_page").map do |container|
-      read = self.new
-    read.book_description = doc.search("p").text
-   read.product_information = doc.search ("tr").text
-      #read
+      doc.search("article.product_page").map do |container|
+        list = self.new
+        list.book_description = doc.search("p").text
+        list.product_information = doc.search ("tr").text
+        list
      end
     end
 
