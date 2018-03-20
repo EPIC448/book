@@ -1,6 +1,6 @@
 class Book::Book_scraper
 
-  attr_accessor :genre, :name, :book_description, :product_information, :url
+  attr_accessor :genre, :name, :book_description, :product_information, :price, :url
   #shift Q to get back in pry
 
   # a method that iterater over book methods.
@@ -25,12 +25,13 @@ class Book::Book_scraper
      end
     end
 
+# look at your student scraper method...
     def self.scraper_single_page
-      doc = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"))
+      doc = Nokogiri::HTML(open("url"))
       doc.search("article.product_page").map do |container|
         list = self.new
         list.book_description = doc.search("p").text
-        list.product_information = doc.search ("tr").text
+        list.product_information = doc.search("tr").text
         list
      end
     end
