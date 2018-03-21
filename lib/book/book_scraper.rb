@@ -14,8 +14,13 @@ class Book::Book_scraper
 
 
     def self.scraper_homepage
-      doc = Nokogiri::HTML(open("http://books.toscrape.com/"))
+      doc = Nokogiri::HTML(open("index_url"))
+       list = []
       doc.search("div.page_inner").map do |container|
+        binding.pry
+
+
+        container.search().each do |list|
         list = self.new
         list.genre = doc.search("li a").text
         list.name = doc.search("h3 a").text
