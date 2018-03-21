@@ -5,7 +5,6 @@ class Book::CLI
   def list_books
     @book_scraper = Book::Book_scraper.collection
     @book_scraper.each_slice(10) {|a| p a}
-    binding.pry
     @book_scraper.each.with_index(1) do | list,i|
       puts "#{i}. #{list.genre} - #{list.name} - #{list.book_description} - #{list.url}"
 

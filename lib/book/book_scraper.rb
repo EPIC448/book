@@ -19,12 +19,15 @@ class Book::Book_scraper
       doc = Nokogiri::HTML(open("http://books.toscrape.com"))
       list = []
       doc.search("div.page_inner").map do |container|
-        container.search().each do |list|
+
+        container.each do |list|
+          binding.pry
         list = self.new
-        list.genre = doc.search("li a").text
-        list.name = doc.search("h3 a").text
+        list.genre = container.search("li a").text
+        list.name = container.search("h3 a").text
         list.url = "http://books.toscrape.com/"
-        list.price = doc.search("p.price_color").text
+        list.price = container.search("p.price_color").text
+
         list
       end
      end
@@ -36,8 +39,8 @@ class Book::Book_scraper
       doc = Nokogiri::HTML(open("http://books.toscrape.com"))
       doc.search("article.product_page").map do |container|
         list = self.new
-        list.book_description = doc.search("p").text
-        list.product_information = doc.search("tr").text
+        list.book_description = container.search("p").text
+        list.product_information = container.search("tr").text
         list
      end
     end
