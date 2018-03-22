@@ -30,14 +30,12 @@ class Book::Book_scraper
 # look at your student scraper method...
 
     def self.scrape_book #(books in a genre)
-      doc = Nokogiri::HTML(open("http://books.toscrape.com"))
-      binding.pry
-      doc.search("article.product_page").map do |container|
-
+      doc = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/category/books_1/index.html"))
+      doc.search("div.col-sm-8.col-md-9").map do |box|
         list = self.new
-        list.book_description = container.search("p").text
-        list.product_information = container.search("tr").text
-            list.price = container.search("p.price_color").text
+        list.book_description = box.search("p").text
+        list.product_information = box.search("tr").text
+            list.price = box.search("p.price_color").text
         list
      end
     end
