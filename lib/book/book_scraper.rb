@@ -19,25 +19,24 @@ class Book::Book_scraper
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
     list = []
     doc.search("ul.nav.nav-list ul a").map do |container|
-      container.each do |list|
         list = self.new
         list.genre = container.text
         list
-      end
+
     end
   end
 
   # look at your student scraper method...
 
   def self.scrape_book #(books in a genre)
-    doc = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/category/books_1/index.html"))
-    # doc.search("div.col-sm-8.col-md-9").map do |box|
-    doc.search("article.product_pod").map do |box|
-
+    doc = Nokogiri::HTML(open("http://books.toscrape.com"))
+    list = [ ]
+      doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       list = self.new
-      list.book_description = box.search("p").text
-      list.product_information = box.search("p.instock.availability").text
-      list.price = box.search("p.price_color").text
+      binding.pry
+      list.book_description = box.css("h3 a").children.text
+      list.product_information = box.css("p.instock.availability").text
+      list.price = box.css("p.price_color").text
       list
     end
   end
