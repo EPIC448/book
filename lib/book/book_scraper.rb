@@ -21,15 +21,16 @@ class Book::Book_scraper
     doc.search("ul.nav.nav-list ul a").map do |container|
         list = self.new
         list.genre = container.text
+        list.url = #{a.attr('href')} ????
         list
-
+        url
     end
   end
 
   # look at your student scraper method...
 
-  def self.scrape_book #(books in a genre)
-    doc = Nokogiri::HTML(open("http://books.toscrape.com"))
+  def self.scrape_book(url)
+    doc = Nokogiri::HTML(open(url))
     list = [ ]
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       list = self.new
