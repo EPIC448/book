@@ -20,8 +20,9 @@ class Book::Book_scraper
     list = []
     doc.search("ul.nav.nav-list ul a").map do |container|
         list = self.new
-        list.genre = container.text
-        list.url = #{a.attr('href')} ????
+        list.genre = container.text.strip     #works perfect
+        binding.pry
+        list.url = container.values  #.#works perfect
         list
         url
     end
@@ -34,7 +35,6 @@ class Book::Book_scraper
     list = [ ]
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       list = self.new
-      binding.pry
       list.book_description = box.css("h3 a").children.text
       list.product_information = box.css("p.instock.availability").text
       list.price = box.css("p.price_color").text
