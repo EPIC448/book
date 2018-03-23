@@ -22,16 +22,21 @@ class Book::Book_scraper
     list = self.new
     genre = container.text.strip     #works perfect
     url = container.values           #works perfect
-    list << {genre: genre, url: url}    #<Book::Book_scraper:0x000000027deb58 @genre="Mystery">
+    list << {genre: genre, url: url}
+    #:genre=>"Travel", :url=>["catalogue/category/books/travel_2/index.html"]
     end
+    #how do we just call genre.
+    #note genre and Url is a string.
     list
   end
 
   # look at your student scraper method...
-
-  def self.scrape_book(url)
-    doc = Nokogiri::HTML(open(url))
+  #list right now is a string.
+  def self.scrape_book(list)
+    binding.pry
+    doc = Nokogiri::HTML(open(list))
     pages = [ ]
+
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       pages = self.new
       pages.book_description = box.css("h3 a").children.text
