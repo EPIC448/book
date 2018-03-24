@@ -9,11 +9,9 @@ class Book::Book_scraper
     # keep Return the instances. We need to change that.
     collection = [ ]
     collection << self.scrape_genre
-    collection << self.scrape_book
     collection
+    # this would altermaticaly call the second method
   end
-
-  # we need to have it in single... order per book.
 
   def self.scrape_genre
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
@@ -21,7 +19,7 @@ class Book::Book_scraper
     doc.search("ul.nav.nav-list ul a").map do |container|
     genre = container.text.strip     #works perfect
     url = container.values           #works perfect
-    list<< {genre: genre, book_url: url}
+    list << {genre: genre, book_url: url}
     url = url[0]
     self.scrape_book(url)
     end
@@ -34,12 +32,12 @@ class Book::Book_scraper
     doc = Nokogiri::HTML(open("http://books.toscrape.com/" + book_url))
     #  we need to add the orginal url + semi scraped book_url
     pages = [ ]
-    binding.pry
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       pages = self.new
-      pages.book_description = box.css("h3 a").children.text
-      pages.product_information = box.css("p.instock.availability").text
+      pages.name = box.css("h3 a").children.text
+  pages.product_information = true
       pages.price = box.css("p.price_color").text
+      pages.book_description = true
       pages
     end
   end
