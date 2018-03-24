@@ -1,6 +1,6 @@
 class Book::Book_scraper
 
-  attr_accessor :genre, :name, :book_description, :product_information, :price, :url
+  attr_accessor :genre, :name, :book_description, :product_information, :price, :book_url
   #shift Q to get back in pry
 
   # a method that iterater over book methods.
@@ -19,22 +19,19 @@ class Book::Book_scraper
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
     list = []
     doc.search("ul.nav.nav-list ul a").map do |container|
-    list = self.new
     genre = container.text.strip     #works perfect
     url = container.values           #works perfect
-    list << {genre: genre, url: url}
-    #:genre=>"Travel", :url=>["catalogue/category/books/travel_2/index.html"]
+    list<< {genre: genre, book_url: url}
+    
+  binding.pry
     end
-    #how do we just call genre.
-    #note genre and Url is a string.
     list
   end
 
   # look at your student scraper method...
   #list right now is a string.
-  def self.scrape_book(list)
-    binding.pry
-    doc = Nokogiri::HTML(open(list))
+  def self.scrape_book(book_url)
+    doc = Nokogiri::HTML(open(book_url))
     pages = [ ]
 
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
