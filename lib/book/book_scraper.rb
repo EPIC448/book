@@ -22,8 +22,8 @@ class Book::Book_scraper
     genre = container.text.strip     #works perfect
     url = container.values           #works perfect
     list<< {genre: genre, book_url: url}
-    
-  binding.pry
+    url = url[0]
+    self.scrape_book(url)
     end
     list
   end
@@ -31,9 +31,10 @@ class Book::Book_scraper
   # look at your student scraper method...
   #list right now is a string.
   def self.scrape_book(book_url)
-    doc = Nokogiri::HTML(open(book_url))
+    doc = Nokogiri::HTML(open("http://books.toscrape.com/" + book_url))
+    #  we need to add the orginal url + semi scraped book_url
     pages = [ ]
-
+    binding.pry
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       pages = self.new
       pages.book_description = box.css("h3 a").children.text
