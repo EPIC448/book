@@ -33,12 +33,13 @@ class Book::Book_scraper
     #  we need to add the orginal url + semi scraped book_url
      pages = [ ]
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
-      pages = self.new
-      pages.name = box.css("h3 a").children.text
-  pages.product_information = true
-      pages.price = box.css("p.price_color").text
-      pages.book_description = true
-      pages
+      name = box.css("h3 a").text
+      price = box.css("p.price_color").text
+      book_description = true
+      product_information = true
+      pages << {name: name, book_description: book_description, product_information: product_information, price: price}
     end
+      pages
   end
+
 end
