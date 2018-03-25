@@ -8,8 +8,7 @@ class Book::CLI
     binding.pry
     @book_scraper.each_slice(10) {|a| a}
     @book_scraper.each.with_index(1) do | list,i|
-      puts "#{i}. #{list.genre} - #{list.name} - #{list.book_description} - #{list.url}"
-
+      puts "#{i}. #{genre} - #{pages.name} - #{list.name} - #{pages.product_information} -  #{pages.price} - #{pages.book_description}"
     end
   end
 
