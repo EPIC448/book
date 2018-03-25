@@ -5,13 +5,13 @@ class Book::Book_scraper
 
   # a method that iterater over book methods.
 
-  def self.collection
-    # keep Return the instances. We need to change that.
-    collection = [ ]
-    collection << self.scrape_genre
-    collection
-    # this would altermaticaly call the second method
-  end
+  # def self.collection
+  #   # keep Return the instances. We need to change that.
+  #   collection = [ ]
+  #   collection << self.scrape_genre
+  #   collection
+  #   # this would altermaticaly call the second method
+  # end
 
   def self.scrape_genre
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
@@ -39,7 +39,6 @@ class Book::Book_scraper
       product_information = true
       pages << {name: name, book_description: book_description, product_information: product_information, price: price}
     end
-      pages
+      pages  #it works when when called in the   "def self.scrape_genre"
   end
-
 end
