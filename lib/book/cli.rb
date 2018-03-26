@@ -3,13 +3,12 @@ class Book::CLI
 
 
   def self.list_books
-    # @book_scraper = Book::Book_scraper.collection
-      @book_scraper = Book::Book_scraper.scrape_genre
-    #make sure @book_scraper is not returing nil.  working till this point
-    @book_scraper.each_slice(10) {|a| a}
-    @book_scraper.each.with_index(1) do |list,i|
-      binding.pry
-      puts "#{i}. #{genre} - #{pages.name} - #{pages.product_information} -  #{pages.price} - #{pages.book_description}"
+     @roll = Book::Book_scraper.collection
+    #roll could be anything
+    #@roll = Book::Book_scraper.scrape_genre
+     @roll.each_slice(10) {|a| a}
+     @roll.each.with_index(1) do |roll,i|
+      puts "#{i}. #{roll.genre} - #{roll.name} - #{roll.product_information} -  #{roll.price} - #{roll.book_description}"
     end
   end
 
