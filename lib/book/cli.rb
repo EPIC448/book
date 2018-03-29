@@ -3,13 +3,9 @@ class Book::CLI
 
 
   def self.list_books
-     @roll = Book::Book_scraper.collection
-    #roll could be anything
-    #@roll = Book::Book_scraper.scrape_genre
-     @roll.each_slice(10) {|a| a}
-     @roll.each.with_index(1) do |roll,i|
-      puts "#{i}. #{roll.genre} - #{roll.name} - #{roll.product_information} -  #{roll.price} - #{roll.book_description}"
-    end
+    book_array = book_scraper.scrape_genre
+    # Book.indicate_genre(book_array)
+    
   end
 
 # google "how to output 10 items at a time from array ruby"
