@@ -4,7 +4,7 @@ class Book::CLI
 
   def self.list_books
     book_array = book_scraper.scrape_genre
-    # Book.indicate_genre(book_array)
+    # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
     
   end
 
