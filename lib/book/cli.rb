@@ -1,10 +1,14 @@
-
-class Book::CLI
-
+require_relative "../lib/book_scraper.rb"
+require_relative "../lib/solo_book.rb"
+require 'nokogiri'
+require 'colorize'
+require 'pry'
 
   def self.list_books
     book_array = book_scraper.scrape_genre
     # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
+    book_array
+    binding.pry
     
   end
 

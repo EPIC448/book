@@ -1,3 +1,5 @@
+require 'Nokogiri'
+require 'pry'
 
 class Book_scraper #this was changed
 
