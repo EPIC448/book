@@ -1,12 +1,12 @@
-require_relative "../lib/book_scraper.rb"
-require_relative "../lib/solo_book.rb"
-require 'nokogiri'
+require "../lib/book/book_scraper"
+require "../lib/book/solo_book"
+require 'nokogiri' 
 require 'colorize'
 require 'pry'
 
 
 class Cli
-  BASE_PATH =
+  BASE_PATH = true # we most add value to this places... 
 
   def self.list_books
     book_array = book_scraper.scrape_genre

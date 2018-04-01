@@ -1,4 +1,4 @@
-require 'Nokogiri'
+require "open-uri"
 require 'pry'
 
 class Book_scraper #this was changed
@@ -16,7 +16,6 @@ class Book_scraper #this was changed
     self.scrape_book(url)
     end
     list
-    binding.pry
   end
 
   # look at your student scraper method...
@@ -34,4 +33,5 @@ class Book_scraper #this was changed
     end
       pages  #it works when when called in the   "def self.scrape_genre"
   end
+  
 end
