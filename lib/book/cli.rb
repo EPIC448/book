@@ -4,6 +4,10 @@ require 'nokogiri'
 require 'colorize'
 require 'pry'
 
+
+class Cli
+  BASE_PATH =
+
   def self.list_books
     book_array = book_scraper.scrape_genre
     # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
