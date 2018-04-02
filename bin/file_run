@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "book"
 
-require_relative "../lib/cli.rb"
+require_relative "../lib/book/cli.rb"
 
-CLI.new.list_books
+Cli.new.file_run

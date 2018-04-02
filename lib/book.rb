@@ -1,5 +1,4 @@
 require_relative './book/version'
-
 require_relative './book/cli'
 require_relative './book/book_scraper'
 
@@ -7,3 +6,4 @@ require_relative './book/book_scraper'
  require 'open-uri'
  require 'pry'
  require 'nokogiri'
+

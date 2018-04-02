@@ -1,9 +1,9 @@
-require "book_scraper"
-require "solo_book"
-require 'nokogiri' 
-require 'colorize'
-require 'pry'
+require_relative "./book_scraper"
+require_relative "./solo_book"
 
+require 'nokogiri' 
+# require 'colorize'
+require 'pry'
 
 class Cli
   BASE_PATH = true # we most add value to this places... 
