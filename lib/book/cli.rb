@@ -1,5 +1,5 @@
-require "../lib/book/book_scraper"
-require "../lib/book/solo_book"
+require "book_scraper"
+require "solo_book"
 require 'nokogiri' 
 require 'colorize'
 require 'pry'
