@@ -1,5 +1,5 @@
-require_relative "../lib/book_scraper.rb"
-require_relative "../lib/solo_book.rb"
+require_relative "book_scraper.rb"
+require_relative "solo_book.rb"
 require 'nokogiri' 
 require 'pry'
 
@@ -15,9 +15,10 @@ class CLI
      end
   
   def list_books
-      book_array = book_scraper.scrape_genre
-      # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
-      book_array  = true   
+      # book_array = book_scraper.scrape_genre
+      # # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
+      # book_array  = true   
+      puts "Im awesome"
     end
 
     # google "how to output 10 items at a time from array ruby"
