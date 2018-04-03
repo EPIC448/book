@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 require_relative "../lib/book/cli.rb"
 
 Cli.new.file_run
