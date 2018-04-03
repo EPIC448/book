@@ -2,7 +2,7 @@
 require_relative "../lib/cli.rb"
 
 
-CLI.new.run
+CLI.new.call
 
 #the reason i am getting errors back is becasue some of the
 #methods im calling are not return..
