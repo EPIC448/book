@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require_relative "../lib/cli.rb"
+
+
+CLI.new.run
+
+#the reason i am getting errors back is becasue some of the
+#methods im calling are not return..
