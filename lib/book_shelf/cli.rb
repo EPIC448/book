@@ -15,11 +15,8 @@ class CLI
   
   def list_books
       book_array = Book_scraper.scrape_genre  # calls the class method in book_scraper.rb
-      binding.pry
       # # # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
-
-      book_array    
-   
+      SoloBook.create_genre_collection(book_array)    
     end
 
     # google "how to output 10 items at a time from array ruby"
