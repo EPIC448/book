@@ -10,18 +10,30 @@ class CLI
    
      def call
        list_books
-      #  option
+       single_book
+        # option
      end
   
-  def list_books
+     def list_books
       book_array = Book_scraper.scrape_genre  # calls the class method in book_scraper.rb
       # # # Book.indicate_genre(book_array)   # create a method in genre.rb that breaks this down.
       SoloBook.create_genre_collection(book_array)    
-    end
+      end
+
+
+      # stopping point
+      def single_book
+       SoloBook.all.each do |student|
+        Book_scraper.scrape_book(book_url)
+
+      end
+
+
+    # ^^^ every thing works up to here ^^^^
 
     # google "how to output 10 items at a time from array ruby"
 
-  # def option
+  #  def option
     # input = nill
     # while input != "exit"
     #   puts "Type Geners to view book geners"
@@ -51,6 +63,7 @@ class CLI
     # def goodbye
     #   puts "see you tomorrow"
     # end
+  #  end
 
 end
 
