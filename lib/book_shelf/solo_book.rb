@@ -3,15 +3,25 @@ class SoloBook
     #note, we do not need base path here
     attr_accessor :genre, :name, :book_description, :product_information, :price, :book_url
     #shift Q to get back in pry
+         @@all = []
+           
+         def initialize(list_hash)
+                # iterates over list_hash
+                list_hash.each do |key, value|
+    # genres_url = nested_genres.each {|key, value| puts "#{key} is #{value}" }
+                self.send("#{key}=", value)
+                # note self = "travel"
+                end
+                @@all << self
+            end
 
-                # @@all = []
-                
-                # def initialize()
-                #iterates over key values pairs from Book_scraper.
-    # # genres_url = nested_genres.each {|key, value| puts "#{key} is #{value}" }
+           def self.all
+            
+            @@all
 
-                # end
-
+           end
+        
+        #    ^^^ every thing works up to here ^^^^
 
 
     #get item from the scraper... 
