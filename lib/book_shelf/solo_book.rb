@@ -1,6 +1,6 @@
 
 class SoloBook
-    
+    #note, we do not need base path here
 attr_accessor :genre, :name, :book_description, :product_information, :price, :book_url
 #shift Q to get back in pry
 
@@ -17,6 +17,13 @@ end
 # to the cLI.. than has a method  from the Solo_book.rb
 # work on the  passed in method  from scraper.genre
 
+# def 
+
+# nested_genres.each do |list_hash|
+#     list_hash
+#     #iterates over key values pairs from Book_scraper.
+# # genres_url = nested_genres.each {|key, value| puts "#{key} is #{value}" }
+# end
 
 # part 2
 # self.scrape_book.. 

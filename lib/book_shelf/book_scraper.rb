@@ -7,19 +7,18 @@ class Book_scraper #this was changed
 
   def self.scrape_genre
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
-    list = []
+    nested_genres = []
     doc.search("ul.nav.nav-list ul a").map do |container|
     genre = container.text.strip     #works perfect
     url = container.values           #works perfect
-    list << {genre: genre, book_url: url}
+    nested_genres << {genre: genre, book_url: url}
     url = url[0]
     # self.scrape_book(url)
-    binding.pry
+   
     end
-    list
-  
+    nested_genres
   end
-
+#  ^^^^ the above is complete^^^
   # look at your student scraper method...
   #list right now is a string.
   # def self.scrape_book(book_url)
