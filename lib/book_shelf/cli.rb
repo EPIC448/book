@@ -10,7 +10,7 @@ class CLI
    
      def call
        list_books
-       single_book
+        single_book
         # option
      end
   
@@ -23,10 +23,12 @@ class CLI
 
       # stopping point
       def single_book
-       SoloBook.all.each do |student|
-        Book_scraper.scrape_book(book_url)
-
+       SoloBook.all.each do |genre_book|
+       attributes= Book_scraper.scrape_book(genre_book.book_url)
+       binding.pry 
+       genre_book.scrape_book(attributes_in_hash)
       end
+    end
 
 
     # ^^^ every thing works up to here ^^^^

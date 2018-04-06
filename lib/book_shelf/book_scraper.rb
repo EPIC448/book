@@ -14,7 +14,6 @@ class Book_scraper #this was changed
     nested_genres << {genre: genre, book_url: url}
     url = url[0]
     # self.scrape_book(url)
-   
     end
     nested_genres
   end
@@ -22,17 +21,18 @@ class Book_scraper #this was changed
 
 
 
-  def self.scrape_book(book_url)
-    doc = Nokogiri::HTML(open("http://books.toscrape.com/" + book_url))
+  def self.scrape_book(book_url)  #we need to remove []
+    # turn ["catalogue/category/books/travel_2/index.html"] => "catalogue/category/books/travel_2/index.html"
+ 
+    doc = Nokogiri::HTML(open(book_url))
     #  we need to add the orginal url + semi scraped book_url
-     pages = [ ]
+    pages = [ ]
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
       name = box.css("h3 a").text
       price = box.css("p.price_color").text
       book_description = true
       product_information = true
       pages << {name: name, book_description: book_description, product_information: product_information, price: price}
-    binding.pry
     end
       pages  #it works when when called in the   "def self.scrape_genre"
   end

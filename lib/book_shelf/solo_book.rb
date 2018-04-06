@@ -39,4 +39,14 @@ class SoloBook
 # part 2
 # self.scrape_book.. 
 #   will give each of the books in the genre.
+
+def add_student_attributes(attributes_in_hash) # used in command line 29. attribute_hash is passed in
+    #attr  in this case is a KEY =  :twitter and VALUE = "https://twitter.com/empireofryan"
+    attributes_hash.each do |attr, value| 
+      self.send("#{attr}=", value)
+    end
+    self
+  end
+
+
 end
