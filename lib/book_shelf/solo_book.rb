@@ -11,6 +11,7 @@ class SoloBook
     # genres_url = nested_genres.each {|key, value| puts "#{key} is #{value}" }
                 self.send("#{key}=", value)
                 # note self = "travel"
+
                 end
                 @@all << self
             end
@@ -18,7 +19,6 @@ class SoloBook
            def self.all
             
             @@all
-
            end
         
         #    ^^^ every thing works up to here ^^^^

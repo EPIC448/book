@@ -24,9 +24,14 @@ class CLI
       # stopping point
       def single_book
        SoloBook.all.each do |genre_book|
-       attributes= Book_scraper.scrape_book(genre_book.book_url)
-       binding.pry 
+        
+        target_url = genre_book.book_url.each{|book_url| book_url}.join #returned an hash of which we iterate over and got the index.
+       #issue it iterating.. But one of the url dont fit...
+        binding.pry
+        attributes = Book_scraper.scrape_book( target_url)
+
        genre_book.scrape_book(attributes_in_hash)
+      
       end
     end
 
