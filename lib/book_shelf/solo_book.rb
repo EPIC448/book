@@ -17,7 +17,6 @@ class SoloBook
             end
 
            def self.all
-            
             @@all
            end
         
@@ -28,7 +27,8 @@ class SoloBook
     # to the cLI.. than has a method  from the Solo_book.rb
     # work on the  passed in method  from scraper.genre
 
-    def self.create_genre_collection(book_array)
+    def self.create_genre_books(genre_url) #you got this.
+        binding.pry
         book_array.each do |list_hash|
             # we set it to go into in interalize method to 
             #create a new object
