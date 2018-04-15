@@ -2,9 +2,11 @@ require "open-uri"
 require 'pry'
 
 class Book_scraper #this was changed
+
+
   attr_accessor :name, :url
-  
   @@nested_genres = []
+  @@pages = []
   #shift Q to get back in pry
 
   def self.scrape_genre
@@ -39,23 +41,25 @@ def self.scrape_genre_books(genre)
   @@nested_genres
 end
 
-  def self.scrape_book(book_url)  #scrape list of books in the Genre
-    # turn ["catalogue/category/books/travel_2/index.html"] => "catalogue/category/books/travel_2/index.html"
-     book_string = book_url[0]
-     binding.pry
+  def self.scrape_book(genre_url)  #scrape list of books in the Genre
 
-    doc = Nokogiri::HTML(open(book_string))
-    
+    doc = Nokogiri::HTML(open(genre_url))
     #  we need to add the orginal url + semi scraped book_url
-    pages = [ ]
+
       doc.search("li.col-xs-6.col-sm-4.col-md-3.col-lg-3").map do |box|
-      name = box.css("h3 a").text
-      price = box.css("p.price_color").text
+       name = box.css("a").text #done
+      price = box.css("p.price_color").text #done
+      # need to get the description and product_information
       book_description = true
       product_information = true
-      pages << {name: name, book_description: book_description, product_information: product_information, price: price}
+      @@pages << {name: name, book_description: book_description, product_information: product_information, price: price}
     end
-      pages  #it works when when called in the   "def self.scrape_genre"
-  end
+      @@pages  #it works when when called in the   "def self.scrape_genre"
+    end
+
+
+    def self.all_pages
+      @@pages
+    end
   
 end

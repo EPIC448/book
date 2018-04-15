@@ -6,7 +6,6 @@ require 'pry'
 # require 'colorize'
 
 class CLI
-  BASE_PATH = true # we most add value to this places... 
    
      def call
       puts "Welcome to the Book Scraper!"
@@ -40,13 +39,11 @@ class CLI
 
 
       # stopping point
-      def single_book
-       SoloBook.all.each do |genre_book|
-       
+      def book_info
+        Book_scraper.all_pages.each do |book_details|
          target_url = genre_book.book_url.map{|book_url| book_url}.join#returned an hash of which we iterate over and got the index.
         #issue it iterating.. But one of the url dont fit...
         attributes = Book_scraper.scrape_book( "http://books.toscrape.com/" + target_url )
-        binding.pry
 
        genre_book.scrape_book(attributes_in_hash)
       
