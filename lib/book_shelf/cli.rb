@@ -16,10 +16,10 @@ class CLI
          user_genre = Book_scraper.find_genre(input)
          Book_scraper.scrape_genre_books(user_genre)
        #TODO: create a method that takes the input as an arguement and sracpes the books from that genre - this can live in the solo book class
+       
        #TODO: create a method that lists the first 10 books
        #TODO: user options go here
-       #TODO: get user input for options
-        single_book
+       #TODO: get user input for options #done
         # option
      end
   
@@ -32,8 +32,7 @@ class CLI
         #TODO: list out the genres
         Book_scraper.all_genres.each.with_index(1) do |genre, index| 
           puts "#{index} - #{genre.name}"
-          SoloBook.create_genre_books(genre.url)
-         
+          SoloBook.create_genre_books(genre.url)         
         end
       end
 
@@ -41,6 +40,8 @@ class CLI
       # stopping point
       def book_info
         Book_scraper.all_pages.each do |book_details|
+
+
          target_url = genre_book.book_url.map{|book_url| book_url}.join#returned an hash of which we iterate over and got the index.
         #issue it iterating.. But one of the url dont fit...
         attributes = Book_scraper.scrape_book( "http://books.toscrape.com/" + target_url )

@@ -30,21 +30,11 @@ class SoloBook
     def self.create_genre_books(genre_url) #you got this.
         Book_scraper.scrape_book(genre_url)
        
-    
-       
-        # .each do |list_hash|
-        #     binding.pry
-
-        
-        #     # we set it to go into in interalize method to 
-        #     #create a new object
-        #     SoloBook.new(list_hash)     
-        #  end
     end
 
     def testing
         Book_scraper.all_pages.each do |book_details|
-binding.pry
+
         end
     end
 
