@@ -23,7 +23,7 @@ class CLI
         
             
             if input == "genre"
-              List_genre
+              genre
 
             elsif input == "list"
                 book_list
@@ -48,8 +48,12 @@ class CLI
      end
   
      def genre
-        List_genre.genre
+         List_genre.all.each_with_index do |genres, index|
+           puts "#{index + 1}. #{genres.name}"
+           #checked and good to go
+       end
      end
+     
 
      def book_list
         List_Book.list_book
