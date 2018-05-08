@@ -21,7 +21,7 @@ class List_genre
           @@all_genre << genre
         end
         @@all_genre # class variable
-        end
+    end
 
 
       def self.all

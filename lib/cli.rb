@@ -53,14 +53,16 @@ class CLI
            #checked and good to go
        end
      end
-     
+
 
      def book_list
-        List_Book.list_book
+        List.all
+        
       end
 
       def book_detail
         Details.check
+
         # Book_scraper.all_pages.each do |book|
         #   binding.pry
         #   puts "#{i}.#{list.name} - #{book.book_description} - #{book.url}"
