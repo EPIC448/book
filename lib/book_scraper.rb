@@ -4,7 +4,9 @@
 class Book::Book_scraper #this was changed
 
 
-  attr_accessor :genre, :name, :book_description, :product_information, :price, :book_url
+  attr_accessor :genre, :name, :url
+
+  # (add to anther scraper for books..... :book_description, :product_information, :price
 
   @@nested_genres = []
 
@@ -15,10 +17,9 @@ class Book::Book_scraper #this was changed
   def self.scrape_genre
     doc = Nokogiri::HTML(open("http://books.toscrape.com"))
     doc.search("ul.nav.nav-list ul a").map do |container|
-      genre = Book_scraper.new
+      genre = Book::Book_scraper.new
       genre.name = container.text.strip     #works perfect
-      # genre.url = "http://books.toscrape.com/#{container.values.join}" 
-      genre.url =  true
+       genre.url = "http://books.toscrape.com/#{container.values.join}" 
       # doc.search("div.page_inner").children
       #works perfect
       @@nested_genres << genre

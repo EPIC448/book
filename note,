@@ -15,7 +15,7 @@ Scrape the books.toscrape site.
      -The user should only see the first ten books, 
      -there should be an option for the user to either select from that list or see the next set of ten books.
      
--Select book to get the book name-
+-Select book to get the book names-
 
     - -- A user can then select a book and be given the books name
     ---- the Product description, and its product information.

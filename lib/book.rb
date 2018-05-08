@@ -1,9 +1,10 @@
 require_relative "./version.rb"
-require_relative './book_shelf/cli.rb'
-require_relative './book_shelf/book_scraper.rb'
+require_relative './cli.rb'
+require_relative './details.rb'
 
 # this is execution folder.
  require 'open-uri'
  require 'pry'
  require 'nokogiri'
+
 

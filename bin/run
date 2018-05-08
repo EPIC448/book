@@ -7,7 +7,7 @@ def reload!
   load './lib/book'
 end
 
-Book::CLI.new.call
+CLI.new.call
 #   patternes of how you solve my CLI
 
 #the reason i am getting errors back is becasue some of the
