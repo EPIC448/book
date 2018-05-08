@@ -1,5 +1,5 @@
 
-class Book
+class List_Book
     #note, we do  need base path here
 
     # attr_accessor :book

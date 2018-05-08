@@ -4,7 +4,6 @@
 class CLI
    
      def call   
-
       input = nil
       while input != "exit"
 
@@ -24,7 +23,7 @@ class CLI
         
             
             if input == "genre"
-              genre
+              List_genre
 
             elsif input == "list"
                 book_list
@@ -32,11 +31,12 @@ class CLI
             elsif input == "detail"
             book_detail
 
-            elsif input == "exit"
-                goodbye
+            # elsif input == "exit"
+            #    goodbye
             else
               "not sure what you type. Please type Exit or one of the suggestion"
             end
+
           end
        #TODO: create a method that takes the input as an arguement and sracpes the books from that genre - this can live in the solo book class
           
@@ -44,6 +44,7 @@ class CLI
        #TODO: user options go here
        #TODO: get user input for options #done
         # option
+        goodbye
      end
   
      def genre
@@ -51,14 +52,13 @@ class CLI
      end
 
      def book_list
-        Book.list_book
+        List_Book.list_book
       end
 
       def book_detail
         Details.check
         # Book_scraper.all_pages.each do |book|
         #   binding.pry
-
         #   puts "#{i}.#{list.name} - #{book.book_description} - #{book.url}"
       end
 

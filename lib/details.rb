@@ -1,12 +1,13 @@
 class Details
-    attr_accessor  :product_infor, :price
+    "easy song"
+#     attr_accessor  :product_infor, :price
 
-    @@all_books= []
+#     @@all_books= []
 
-#  def initialize(product_infor, price)
-#      @product_infor = product_infor
-#      @price = price
-#  end
+# #  def initialize(product_infor, price)
+# #      @product_infor = product_infor
+# #      @price = price
+# #  end
 
 
  def self.check

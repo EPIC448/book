@@ -6,5 +6,9 @@ require_relative './details.rb'
  require 'open-uri'
  require 'pry'
  require 'nokogiri'
+ require 'require_all'
+
+ require_all 'lib'
+
 
 
