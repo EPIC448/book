@@ -1,6 +1,7 @@
 require_relative "./version.rb"
 require_relative './cli.rb'
 require_relative './details.rb'
+require_relative './list_book.rb'
 
 # this is execution folder.
  require 'open-uri'

@@ -12,7 +12,7 @@ class Details
 
  def self.check
 
-  "I get the list of books"
+   puts "I get the list of books"
 
  end
 
