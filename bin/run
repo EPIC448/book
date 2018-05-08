@@ -1,8 +1,14 @@
 #!/usr/bin/env ruby
-require_relative "../lib/book_shelf/cli.rb"
 
+require "bundler/setup"
+require './lib/book'
 
-CLI.new.call
+def reload!
+  load './lib/book'
+end
+
+Book::CLI.new.call
+#   patternes of how you solve my CLI
 
 #the reason i am getting errors back is becasue some of the
 #methods im calling are not return..
