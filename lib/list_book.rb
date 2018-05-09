@@ -3,7 +3,7 @@ class List
 
     #dont for get to add "self" to your methods.
     
-    attr_accessor :name
+    attr_accessor :name, :price, :book_info
 
          @@all_book = []
            
@@ -33,9 +33,7 @@ class List
         @@all_book << list.name
         #  content.css("body > div > div > div > div > section > div:nth-child(2) > ol > li:nth-child(2) > article > h3 > a").text
 
-
           # doc.search("body > div > div > div > div > section > div:nth-child(2) > ol > li > article > h3 > a[1]").text
-        
           end
           @@all_book
       
@@ -45,12 +43,15 @@ class List
 
   def self.all
     book_url
-
-
-    
-
   end
 
+
+  def self.find(id)
+    binding.pry
+    self.book_url[id.to_i - 1] # find by id
+    
+    # it either find genre by Id
+    # or books by Id
+  end
   
 end
-
