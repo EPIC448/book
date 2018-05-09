@@ -3,67 +3,51 @@ class List
 
     #dont for get to add "self" to your methods.
     
-    attr_accessor :book_name
+    attr_accessor :name
 
          @@all_book = []
            
-    #      def initialize(book)
-    #         @book = book
-    #     end
-    #             @@all << self
-    #     end
-
-    #      def self.all
-    #         @@all
-    #     end
-    
-
+        #  def initialize(book_name)
+        #     @book_name = book_name
+        # end
+               
 
     
     def self.book_url
+
         genre = List_genre.all
-        genre.each do |genre|
-        content = genre.url
+        genre.each do |each_genre|
+        content = each_genre.url
         content  
     
-         doc = Nokogiri::HTML(open(content))
-          check = doc.search ("h3 a")
-          check.each do |name|
-        #   =>  name = #(Element:0x3fe3fb008e48 {
-#   name = "a",
-#   attributes = [
-#     #(Attr:0x3fe3facbd324 { name = "href", value = "../../../its-only-the-himalayas_981/index.html" }),
-#     #(Attr:0x3fe3facbd2d4 { name = "title", value = "It's Only the Himalayas" })],
-#   children = [ #(Text "It's Only the Himalayas")]
-
-thumbnail = name.css("a.attribute")
-binding.pry
-href = thumbnail[0]['href']
-            
-            binding.pry
-          
-
-        #  get_book = List.new
-
-
-
-        #  book_name =list
-
-          end
-        #  we start scraping
-
-    #     book_name = "i list all books"
+        #each content is already iterated over.
+       #need an if else statment.. here...
+         doc = Nokogiri::HTML(open(content))   #note content URL link
+         book = doc.search ("h3 a")
+         list = List.new
+           list.name = book.children.text
+           list.name
         
-    #     @@all_book << get_book
-   
-    #        #checked and good to go
-       end
-      
-    end
+        list.name
 
+        @@all_book << list.name
+        #  content.css("body > div > div > div > div > section > div:nth-child(2) > ol > li:nth-child(2) > article > h3 > a").text
+
+
+          # doc.search("body > div > div > div > div > section > div:nth-child(2) > ol > li > article > h3 > a[1]").text
+        
+          end
+          @@all_book
+      
+      end
+    
+      
 
   def self.all
     book_url
+
+
+    
 
   end
 

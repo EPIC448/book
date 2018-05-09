@@ -51,12 +51,17 @@ class CLI
          List_genre.all.each_with_index do |genres, index|
            puts "#{index + 1}. #{genres.name}"
            #checked and good to go
+           # need to list book of a selected genre.
        end
      end
 
 
      def book_list
-        List.all
+        List.all.each_with_index do |bundle, index|
+       
+          puts "#{index + 1}. #{bundle}"
+           #listing all books
+        end
         
       end
 
@@ -76,6 +81,5 @@ class CLI
   end
 
 
-    # ^^^ every thing works up to here ^^^^
 
     

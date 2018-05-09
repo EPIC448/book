@@ -15,7 +15,7 @@ class List_genre
         doc.search("ul.nav.nav-list ul a").map do |container|
           genre = List_genre.new
           genre.name = container.text.strip     #works perfect
-           genre.url = "http://books.toscrape.com/#{container.values.join}" 
+          genre.url = "http://books.toscrape.com/#{container.values.join}" 
           # doc.search("div.page_inner").children
           #works perfect
           @@all_genre << genre
