@@ -1,19 +1,21 @@
-class List_genre
+class Genre
     attr_accessor  :name, :url
+    attr_reader :books
 
     @@all_genre = []
 
-#  def initialize(name, url)
-#      @product_infor = product_infor
-#      @url = url
-#  end
+ def initialize(name: nil, url: nil)
+     @name = name
+     @url = url
+     @books = []
+ end
 
 
- def self.genre
+ def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
 
         doc.search("ul.nav.nav-list ul a").map do |container|
-          genre = List_genre.new
+          genre = Genre.new
           genre.name = container.text.strip     #works perfect
           genre.url = "http://books.toscrape.com/#{container.values.join}" 
           # doc.search("div.page_inner").children
@@ -25,11 +27,16 @@ class List_genre
 
 
       def self.all
-        genre
+       @@all ||= scrape_genres  # if self.all is @aall or equal to. (no duplicates)
 
       end
 
-    
+      #relationship that genre has many book
+      def add_book(book)
+        @books << book unless @books.include?(book)
+
+      end
+
 
 
 end
