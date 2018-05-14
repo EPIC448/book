@@ -1,15 +1,15 @@
 class Genre
-    attr_accessor  :name, :url
-    attr_reader :books
+    attr_accessor  :name, :url, :books
    @@all = []
-    @@all_genre = []
 
- def initialize(name: nil, url: nil)
+ def initialize(name, url)
      @name = name
      @url = url
      @books = []
  end
 
+
+ # focus of th song to genre relationship
 
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
@@ -20,13 +20,16 @@ class Genre
           genre.url = "http://books.toscrape.com/#{container.values.join}" 
           # doc.search("div.page_inner").children
           #works perfect
-          @@all_genre << genre
+
+          @@all << genre
+          binding.pry
         end
-        @@all_genre # class variable
+        @@all # class variable
     end
 
     def save 
       @@all << self
+      bindi
 
     end
 
@@ -46,8 +49,8 @@ class Genre
       
 
       def add_book(book)
-        book.genre = self if book.genre != self
         @books << book unless @books.include?(book)
+        book.genre = self if book.genre != self
 
       end
 

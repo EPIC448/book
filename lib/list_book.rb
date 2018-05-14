@@ -8,11 +8,13 @@ class BookModel
     attr_accessor :book_name, :price, :book_info
     attr_reader :genre
 
-    def initialize(book_name: nil, price: nil, book_info: nil)
-        @book_name = book_name
+    def initialize(book_name, price, book_info, genre = nil)
+        @book_name = book_name 
         @price = price
         @book_info  = book_info
-        @genre = []
+        if genre != nil
+          self.genre = genre
+        end
     end
     
     def self.scrape_books
@@ -35,6 +37,13 @@ class BookModel
           @@all
 
       end
+
+      def save
+        @@all << self
+
+      end
+
+      
     
   def self.all
     @@all ||= scrape_books # no duplicates
@@ -51,7 +60,7 @@ def self.create(name)
 end
 
 
-def genre=(genre)
+def genre=(genre)  #list of books has one genre
    @genre = genre
    genre.add_book(self)
 end

@@ -8,19 +8,16 @@ class CLI
         while input != "exit"
 
             puts "Welcome to the Book Scraper!" 
-       
-
+            puts "Type Genre to see list of genre"
             puts "Please select the number  genre:"
             puts "Type books to see 10 more books"
             puts "Type Genre to see the list of genres again"
             puts "Type exit to  exit the program"
 
             input = gets.strip.downcase
-            index = input.to_i
 
             if input == "genre"
-              genre
-
+              genre_list
             elsif input == "list book genre"
               list_book_genre
 
@@ -34,14 +31,16 @@ class CLI
         # goodbye
      end
   
-     def genre
-         Genre.all.each_with_index do |genres, index|
+     def genre_list
+        sorted_genre = Genre.all.sort_by{|genre| genres.name}
+        sorted_genre.each_with_index do |genres, index|
+          binding.pry
            puts "#{index + 1}. #{genres.name}"
 
            #checked and good to go
                  # need to list book of a selected genre.  
                     #  Note: if genre is selected, then ---- list .... books
-                  end
+              end
                   
      end
 
@@ -78,9 +77,6 @@ class CLI
             end
         end
       end
-
-
-
 
 
     def goodbye
