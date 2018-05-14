@@ -16,39 +16,28 @@ class CLI
             puts "Type exit to  exit the program"
 
             input = gets.strip.downcase
-
-           
-            # index = input.to_i-1
             index = input.to_i
 
             if input == "genre"
               genre
 
-            elsif input == "list"
-                book_list
+            elsif input == "list book genre"
+              list_book_genre
 
-            elsif input == "detail"
-            book_detail
-
-            # elsif input == "exit"
-            #    goodbye
             else
               "not sure what you type. Please type Exit or one of the suggestion"
             
             end
+
           end
-          
 
-        end
-
-      
         # goodbye
      end
   
      def genre
          Genre.all.each_with_index do |genres, index|
            puts "#{index + 1}. #{genres.name}"
-           
+
            #checked and good to go
                  # need to list book of a selected genre.  
                     #  Note: if genre is selected, then ---- list .... books
@@ -56,31 +45,42 @@ class CLI
                   
      end
 
+     def list_book
+      sorted_books = BookModel.all.sort_by {|x| x.name }
+    end
+
   
 
-     def book_list
+    #  def list_book_genre
 
-      input = nil
-      while input != "exit"
+    #   input = nil
+    #   while input != "exit"
 
-      puts "Type the genre to see the books in that genre..."
-    
-      input = gets.strip.downcase
+    #  
+    #  
+    #   index = input.to_i-1
 
-      # if input == (input)   # #genre number selected
-      #   genres.BookModel (# it will show books in the genre)
-              
-          # BookModel.all.each_with_index do |bundle, index|
+    #    if input == (input)   # #genre number selected
+        
+    #   end
 
-        #list the books in that genre
+      def list_book_genre
+        puts "Type the genre to see the books in that genre..."
+        input = gets.strip.downcase
+        genre  = Genre.find_by_name (input)     
+         genre
 
-
-          # BookModel.find(input)
-
-          # puts "#{index + 1}. #{bundle}"
+          if genre
+            sorted_books = genre.books.sort_by{|book|book.name}
+            sorted_books.each_with_index do |book, index|
+           puts "#{index + 1}. #{book.name} - #{book.genre.name} "
            #listing all books
-      #  end
+            end
+        end
       end
+
+
+
 
 
     def goodbye

@@ -1,7 +1,7 @@
 class Genre
     attr_accessor  :name, :url
     attr_reader :books
-
+   @@all = []
     @@all_genre = []
 
  def initialize(name: nil, url: nil)
@@ -25,15 +25,43 @@ class Genre
         @@all_genre # class variable
     end
 
+    def save 
+      @@all << self
+
+    end
 
       def self.all
        @@all ||= scrape_genres  # if self.all is @aall or equal to. (no duplicates)
 
       end
 
-      #relationship that genre has many book
+   # bring in the book
+      
+      def self.create(book)
+        book = BookModel.new(name)
+        book.save
+        book
+ binding.pry
+      end
+      
+
       def add_book(book)
+        book.genre = self if book.genre != self
         @books << book unless @books.include?(book)
+
+      end
+
+      def genres
+
+        @books.collect{|book| book.song}.uniq
+
+      end
+
+            #relationship that genre has many book
+
+      def self.find_by_name (name)
+
+        self.all.find {|x| x.name == name}
 
       end
 

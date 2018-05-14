@@ -3,6 +3,8 @@ class BookModel
 
     #dont for get to add "self" to your methods.
     @@all_book = []
+    @@all = []
+
     attr_accessor :book_name, :price, :book_info
     attr_reader :genre
 
@@ -27,38 +29,41 @@ class BookModel
        object_book = BookModel.new
         object_book.book_name = data.map {|one_book| one_book.text } #keep
         object_book.price = doc.search("div.product_price > p.price_color").map{|price| price.text}  #keep
-        @@all_book << object_book
+        @@all << object_book
+        binding.pry
           end
-          @@all_book
+          @@all
 
       end
     
   def self.all
     @@all ||= scrape_books # no duplicates
-    # 
   end
 # >>>>>>>>>>>>>>>>
   # We need to buid a relationship in with Genre knows it had many books
   #we can say 
   #genre.bookmodel.
   # <<<<<<<<<<<
+def self.create(name)
+  bookmodel = BookModel.new(name)
+  bookmodel.save
+  bookmodel
+end
+
 
 def genre=(genre)
    @genre = genre
    genre.add_book(self)
 end
 
-  def add_genre(genre)
-    @genre << genre unless @genre.include?(genre)
-    genre.bookmodel = self unless genre.bookmodel == self
-binding.pry
-  end
+#   def self.add_genre(genre)
+#     @genres << genre unless @genres.include?(genre)
+#     genre.bookmodel = self unless genre.bookmodel == self
+# binding.pry
+#   end
 
-
-    # def self.find_by_name(name)
-      #      self.all.find {|x| x.name == name}
-      #  end
-
-
+    def self.find_by_name(name)
+           self.all.find {|x| x.name == name}
+    end
   
 end
