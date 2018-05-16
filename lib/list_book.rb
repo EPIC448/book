@@ -20,26 +20,22 @@ class BookModel
       
        doc = Nokogiri::HTML(open(content))   #note content URL link
        data = doc.search ("h3 a")
-       data_genre = doc.search("h1").text
-              #itereate through data.... 
-       data.map do |book|
+       data_genre = doc.search("h1").text  #itereate through data.... 
+       data.map do |book| #get all books
        object_book = BookModel.new
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class
        object_book.genre.add_book(object_book)
-       binding.pry
-        object_book.book_name = book.text #keep
-        object_book.price = doc.search("div.product_price > p.price_color").map{|price| price.text}  #keep
-       object_book.save
-        binding.pry
-          end
-        end
-          @@all
+       object_book.book_name = book.text #keep
+       object_book.price = doc.search("p.price_color")[0].text #keep look at how to progress throught numbers
 
-      end
+       object_book.save
+        end
+        end
+        
+        end
 
       def save
         @@all << self
-
       end
 
       

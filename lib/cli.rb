@@ -64,10 +64,10 @@ class CLI
          genre
 
           if genre
-            sorted_books = genre.books.sort_by{|book|book.name}
 
-            sorted_books.each_with_index do |book, index|
-           puts "#{index + 1}. #{book.name} - #{book.genre.name} "
+            sorted_books = genre.books.sort_by{|genre|genre.book_name}
+            sorted_books.each_with_index do |x, index|
+            puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.price} "
            #listing all books
             end
           end
