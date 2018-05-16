@@ -26,40 +26,45 @@ class BookModel
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class
        object_book.genre.add_book(object_book)
        object_book.book_name = book.text #keep
-       object_book.price = doc.search("p.price_color")[0].text #keep look at how to progress throught numbers
 
-       object_book.save
-        end
-        end
+      #  object_book.price = doc.search("p.price_color")[0].text #keep look at how to progress throught numbers
         
-        end
+       object_book.price = doc.search("p.price_color").each{|x + 1| puts x.text}
+
+binding.pry
+       object_book.save
+
+            end
+            end
+        
+        
+     end
 
       def save
         @@all << self
       end
 
       
-    
-  def self.all
-    @@all ||= scrape_books # no duplicates
+    def self.all
+      @@all ||= scrape_books # no duplicates
+    end
+  # >>>>>>>>>>>>>>>>
+    # We need to buid a relationship in with Genre knows it had many books
+    #we can say 
+    #genre.bookmodel.
+    # <<<<<<<<<<<
+
+  def self.create(name)
+    bookmodel = BookModel.new(name)
+    bookmodel.save
+    bookmodel
   end
-# >>>>>>>>>>>>>>>>
-  # We need to buid a relationship in with Genre knows it had many books
-  #we can say 
-  #genre.bookmodel.
-  # <<<<<<<<<<<
-
-def self.create(name)
-  bookmodel = BookModel.new(name)
-  bookmodel.save
-  bookmodel
-end
 
 
-def genre=(genre)  #list of books has one genre
-   @genre = genre
-   genre.add_book(self)
-end
+  def genre=(genre)  #list of books has one genre
+    @genre = genre
+    genre.add_book(self)
+  end
 
 #   def self.add_genre(genre)
 #     @genres << genre unless @genres.include?(genre)
