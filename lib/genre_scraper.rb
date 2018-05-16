@@ -1,15 +1,11 @@
 class Genre
+
     attr_accessor  :name, :url, :books
    @@all = []
-
- def initialize(name, url)
-     @name = name
-     @url = url
-     @books = []
- end
-
+   @@all_genre = []
 
  # focus of th song to genre relationship
+ #genre has many books
 
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
@@ -20,32 +16,32 @@ class Genre
           genre.url = "http://books.toscrape.com/#{container.values.join}" 
           # doc.search("div.page_inner").children
           #works perfect
-
-          @@all << genre
-          binding.pry
+          genre.books = [ ]
+          genre.save
+          genre
         end
-        @@all # class variable
     end
+    # configure it no to duplicate
 
-    def save 
-      @@all << self
-      bindi
-
+    def save
+     @@all_genre <<  self
+  
     end
 
       def self.all
-       @@all ||= scrape_genres  # if self.all is @aall or equal to. (no duplicates)
+      @@all_genre
+         end
 
-      end
+      
 
    # bring in the book
       
-      def self.create(book)
-        book = BookModel.new(name)
-        book.save
-        book
- binding.pry
-      end
+#       def self.create(book)
+#         book = BookModel.new(name)
+#         book.save
+#         book
+#  binding.pry
+#       end
       
 
       def add_book(book)
@@ -62,12 +58,9 @@ class Genre
 
             #relationship that genre has many book
 
-      def self.find_by_name (name)
-
-        self.all.find {|x| x.name == name}
-
-      end
-
-
+  
+            def self.find_by_name (name)
+                self.all.find {|x| x.name.downcase == name.downcase}
+            end
 
 end

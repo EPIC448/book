@@ -4,6 +4,10 @@
 class CLI
    
      def call   
+      Genre.scrape_genres
+
+      BookModel.scrape_books
+
       input = nil
         while input != "exit"
 
@@ -26,44 +30,34 @@ class CLI
             
             end
 
-          end
+        end
 
         # goodbye
-     end
+      end
+     
   
      def genre_list
-        sorted_genre = Genre.all.sort_by{|genre| genres.name}
-        sorted_genre.each_with_index do |genres, index|
-          binding.pry
-           puts "#{index + 1}. #{genres.name}"
-
-           #checked and good to go
-                 # need to list book of a selected genre.  
-                    #  Note: if genre is selected, then ---- list .... books
-              end
+            Genre.all.uniq.each_with_index do |genre, index|
+            puts "#{index + 1}. #{genre.name}"  #shows only genre
+            
+            end
                   
-     end
+      end
 
-     def list_book
-      sorted_books = BookModel.all.sort_by {|x| x.name }
-    end
-
-  
+    #  def list_book
+    #   sorted_books = BookModel.all.sort_by {|x| x.name }
+    # end
 
     #  def list_book_genre
 
-    #   input = nil
-    #   while input != "exit"
-
-    #  
-    #  
     #   index = input.to_i-1
-
     #    if input == (input)   # #genre number selected
-        
     #   end
 
       def list_book_genre
+        input = nil
+          while input != "exit"
+    
         puts "Type the genre to see the books in that genre..."
         input = gets.strip.downcase
         genre  = Genre.find_by_name (input)     
@@ -71,12 +65,15 @@ class CLI
 
           if genre
             sorted_books = genre.books.sort_by{|book|book.name}
+
             sorted_books.each_with_index do |book, index|
            puts "#{index + 1}. #{book.name} - #{book.genre.name} "
            #listing all books
             end
+          end
+        end #end the While input sentance
+          
         end
-      end
 
 
     def goodbye

@@ -8,18 +8,10 @@ class BookModel
     attr_accessor :book_name, :price, :book_info
     attr_reader :genre
 
-    def initialize(book_name, price, book_info, genre = nil)
-        @book_name = book_name 
-        @price = price
-        @book_info  = book_info
-        if genre != nil
-          self.genre = genre
-        end
-    end
     
     def self.scrape_books
-        genre = Genre.all
-        genre.each do |each_genre|
+        genres = Genre.all
+        genres.each do |each_genre|
         content = each_genre.url
         content  
       # music labray will help with this.
@@ -27,13 +19,20 @@ class BookModel
        #need an if else statment.. here...
       
        doc = Nokogiri::HTML(open(content))   #note content URL link
-       data = doc.search ("h3 a") 
+       data = doc.search ("h3 a")
+       data_genre = doc.search("h1").text
+              #itereate through data.... 
+       data.map do |book|
        object_book = BookModel.new
-        object_book.book_name = data.map {|one_book| one_book.text } #keep
+       object_book.genre = Genre.find_by_name(data_genre) # in Genre class
+       object_book.genre.add_book(object_book)
+       binding.pry
+        object_book.book_name = book.text #keep
         object_book.price = doc.search("div.product_price > p.price_color").map{|price| price.text}  #keep
-        @@all << object_book
+       object_book.save
         binding.pry
           end
+        end
           @@all
 
       end
@@ -53,6 +52,7 @@ class BookModel
   #we can say 
   #genre.bookmodel.
   # <<<<<<<<<<<
+
 def self.create(name)
   bookmodel = BookModel.new(name)
   bookmodel.save
