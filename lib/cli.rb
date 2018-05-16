@@ -13,23 +13,19 @@ class CLI
 
             puts "Welcome to the Book Scraper!" 
             puts "Type Genre to see list of genre"
-            puts "Please select the number  genre:"
-            puts "Type books to see 10 more books"
             puts "Type Genre to see the list of genres again"
+            puts "Type Books to see the list of books in a genre"
             puts "Type exit to  exit the program"
 
             input = gets.strip.downcase
 
             if input == "genre"
               genre_list
-            elsif input == "list book genre"
+            elsif input == "books"
               list_book_genre
-
             else
               "not sure what you type. Please type Exit or one of the suggestion"
-            
             end
-
         end
 
         # goodbye
@@ -44,10 +40,6 @@ class CLI
                   
       end
 
-    #  def list_book
-    #   sorted_books = BookModel.all.sort_by {|x| x.name }
-    # end
-
     #  def list_book_genre
 
     #   index = input.to_i-1
@@ -58,7 +50,7 @@ class CLI
         input = nil
           while input != "exit"
     
-        puts "Type the genre to see the books in that genre..."
+        puts "Type the Genre to see the books in the desired genre..."
         input = gets.strip.downcase
         genre  = Genre.find_by_name (input)     
          genre

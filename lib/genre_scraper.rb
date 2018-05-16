@@ -17,43 +17,32 @@ class Genre
           # doc.search("div.page_inner").children
           #works perfect
           genre.books = [ ]
-          genre.save
+          genre.save     # configure it no to duplicate
+
           genre
         end
     end
-    # configure it no to duplicate
 
     def save
      @@all_genre <<  self
   
     end
 
-      def self.all
+    def self.all
       @@all_genre
-         end
-
-      
+    end
 
 
-      
-
-      def add_book(book)
-        @books << book unless @books.include?(book)
-        book.genre = self if book.genre != self
-
-      end
-
-      def genres
-
-        @books.collect{|book| book.song}.uniq
-
-      end
+    def add_book(book)
+      @books << book unless @books.include?(book)
+      book.genre = self if book.genre != self
+    end
 
             #relationship that genre has many book
 
   
-            def self.find_by_name (name)
-                self.all.find {|x| x.name.downcase == name.downcase}
-            end
+      def self.find_by_name (name)
+          self.all.find {|x| x.name.downcase == name.downcase}
+      end
 
 end
