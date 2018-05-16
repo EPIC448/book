@@ -34,14 +34,7 @@ class Genre
 
       
 
-   # bring in the book
-      
-#       def self.create(book)
-#         book = BookModel.new(name)
-#         book.save
-#         book
-#  binding.pry
-#       end
+
       
 
       def add_book(book)
