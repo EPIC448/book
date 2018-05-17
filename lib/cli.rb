@@ -57,6 +57,8 @@ class CLI
             sorted_books.each_with_index do |x, index|
             puts "#{index + 1}. #{x.book_name} - #{x.genre.name} "
            #listing all books
+
+           # for 1- 10 elemnt...try (slice, hard_code.. [i.e list 1..10], )
             end
           end
         end #end the While input sentance
