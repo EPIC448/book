@@ -24,7 +24,7 @@ class CLI
             elsif input == "books"
               list_book_genre
             else
-              "not sure what you type. Please type Exit or one of the suggestion"
+              "not sure what you type. Please type Exit or Type of the suggestion"
             end
         end
 
@@ -57,9 +57,12 @@ class CLI
             sorted_books.each_with_index do |x, index|
             puts "#{index + 1}. #{x.book_name} - #{x.genre.name} "
            #listing all books
-
+            # else
+            #   puts "not sure what you type. Please type Exit or Type of the Genres"
            # for 1- 10 elemnt...try (slice, hard_code.. [i.e list 1..10], )
+            
             end
+          
           end
         end #end the While input sentance
           

@@ -2,7 +2,6 @@
 class BookModel
 
     #dont for get to add "self" to your methods.
-    @@all_book = []
     @@all = []
 
     attr_accessor :book_name,:book_info
@@ -22,6 +21,7 @@ class BookModel
        data = doc.search ("h3 a")
        data_genre = doc.search("h1").text  #itereate through data.... 
        data.map do |book| #get all books
+
        object_book = BookModel.new
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class
        object_book.genre.add_book(object_book)
@@ -42,6 +42,7 @@ class BookModel
     def self.all
       @@all ||= scrape_books # no duplicates
     end
+
   # >>>>>>>>>>>>>>>>
     # We need to buid a relationship in with Genre knows it had many books
     #we can say 
@@ -54,7 +55,7 @@ class BookModel
     bookmodel
   end
 
-
+ # assiging book here to be read
   def genre=(genre)  #list of books has one genre
     @genre = genre
     genre.add_book(self)

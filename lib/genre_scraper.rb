@@ -1,7 +1,6 @@
 class Genre
 
     attr_accessor  :name, :url, :books
-   @@all = []
    @@all_genre = []
 
  # focus of th song to genre relationship
@@ -32,7 +31,7 @@ class Genre
       @@all_genre
     end
 
-
+#  we connect book to genre  /this not a clas method.
     def add_book(book)
       @books << book unless @books.include?(book)
       book.genre = self if book.genre != self
