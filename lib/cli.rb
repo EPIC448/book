@@ -40,11 +40,7 @@ class CLI
                   
       end
 
-    #  def list_book_genre
-
-    #   index = input.to_i-1
-    #    if input == (input)   # #genre number selected
-    #   end
+    
 
       def list_book_genre
         input = nil

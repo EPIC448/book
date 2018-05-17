@@ -5,7 +5,7 @@ class BookModel
     @@all_book = []
     @@all = []
 
-    attr_accessor :book_name, :price, :book_info
+    attr_accessor :book_name,:book_info
     attr_reader :genre
 
     
@@ -26,19 +26,8 @@ class BookModel
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class
        object_book.genre.add_book(object_book)
        object_book.book_name = book.text #keep
-
-       object_book.price = doc.search("p.price_color").text #keep look at how to progress throught numbers
-  
-      #  price.each do |x|
-      #   puts "x"
-       binding.pry
-
-        #  = puts price.next
-
-      #  object_book.price = doc.search("p.price_color").each{|x + 1| puts x.text}
-
+ 
        object_book.save
-       end
             end
             end
         
@@ -71,11 +60,6 @@ class BookModel
     genre.add_book(self)
   end
 
-#   def self.add_genre(genre)
-#     @genres << genre unless @genres.include?(genre)
-#     genre.bookmodel = self unless genre.bookmodel == self
-# binding.pry
-#   end
 
     def self.find_by_name(name)
            self.all.find {|x| x.name == name}
