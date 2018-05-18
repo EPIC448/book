@@ -10,12 +10,21 @@ class CLI
 
       input = nil
         while input != "exit"
-
+            puts ""
+            puts ""
             puts "Welcome to the Book Scraper!" 
+            puts ""
+            puts ""
             puts "Type Genre to see list of genre"
+            puts ""
+            puts ""
             puts "Type Genre to see the list of genres again"
+            puts ""
+            puts ""
             puts "Type Books to see the list of books in a genre"
-            puts "Type exit to  exit the program"
+            puts ""
+            puts ""
+            puts "Type Exit to exit the program"
 
             input = gets.strip.downcase
 
@@ -43,33 +52,37 @@ class CLI
     
 
       def list_book_genre
+        puts ""
+        puts ""
         puts "Type Desired genre (i.e art) or more to see the next 10 books..."
+        puts ""
+        puts ""
         input = nil
           while input != "exit"
     
         input = gets.strip.downcase
         genre  = Genre.find_by_name (input)     
-         genre
+        genre
 
           if genre
           
             sorted_books = genre.books.sort_by{|genre|genre.book_name}
-            sorted_books[0..10].each.with_index do |x, index|  # shows  10 books
+            sorted_books[0..9].each.with_index do |x, index|  # shows  10 books
             puts "#{index + 1}. #{x.book_name} - #{x.genre.name}"
-
-                end
-           
-           elsif input == "more"
-
-              sorted_books[10..20].each.with_index do |x, index|  # shows  10 books
-              puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
-              
               end
 
+            puts ""
+            puts ""
+
+           elsif input == "more"
+
+               sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
+              puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
+               end
+
            else
-              puts "not sure what you type. Please type Exit or Genres to show books in the choosing Genre"
+              puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre) "
            
-              # for 1- 10 elemnt...try (slice, hard_code.. [i.e list 1..10],   Range method)
           
             end     
           end #end the While input sentance
