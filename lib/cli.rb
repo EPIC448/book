@@ -11,18 +11,13 @@ class CLI
       input = nil
         while input != "exit"
             puts ""
-            puts ""
             puts "Welcome to the Book Scraper!" 
-            puts ""
             puts ""
             puts "Type Genre to see list of genre"
             puts ""
-            puts ""
             puts "Type Genre to see the list of genres again"
             puts ""
-            puts ""
             puts "Type Books to see the list of books in a genre"
-            puts ""
             puts ""
             puts "Type Exit to exit the program"
 
@@ -69,24 +64,30 @@ class CLI
             sorted_books = genre.books.sort_by{|genre|genre.book_name}
             sorted_books[0..9].each.with_index do |x, index|  # shows  10 books
             puts "#{index + 1}. #{x.book_name} - #{x.genre.name}"
-              end
+            puts ""
+            end
+          
+            puts " Type More to see the next 10 books"
 
-            puts ""
-            puts ""
 
            elsif input == "more"
 
                sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
               puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
-               end
+              puts ""
+              # you can add another layer if needed.
+              end
 
-               puts ""
-               puts ""
+               puts " Type Back to go back to select genre to view it book "
 
-           else
+
+              elsif input == "back"
+                call
+
+              else
+
               puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre) "
-           
-          
+              puts ""
             end     
           end #end the While input sentance
         end
