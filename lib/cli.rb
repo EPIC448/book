@@ -80,6 +80,9 @@ class CLI
               puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
                end
 
+               puts ""
+               puts ""
+
            else
               puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre) "
            
