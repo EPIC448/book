@@ -60,10 +60,12 @@ class CLI
         genre
 
           if genre
-          
+          #if sorted_book is greater than 10
             sorted_books = genre.books.sort_by{|genre|genre.book_name}
             sorted_books[0..9].each.with_index do |x, index|  # shows  10 books
-            puts "#{index + 1}. #{x.book_name} - #{x.genre.name}"
+              binding.pry
+
+              puts "#{index + 1}. #{x.book_name} - #{x.genre.name}"
             puts ""
             end
           
@@ -73,7 +75,7 @@ class CLI
            elsif input == "more"
 
                sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
-              puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
+                puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
               puts ""
               # you can add another layer if needed.
               end

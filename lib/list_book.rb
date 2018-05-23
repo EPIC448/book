@@ -26,13 +26,19 @@ class BookModel
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class
        object_book.genre.add_book(object_book)
        object_book.book_name = book.text #keep
- 
+              
+       #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
+       # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
+
+          url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
+       object_book.book_info = url.search("#content_inner > article > p").text
+
        object_book.save
             end
             end
-        
-        
+      
      end
+
 
       def save
         @@all << self

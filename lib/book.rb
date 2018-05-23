@@ -12,3 +12,5 @@ require_relative './list_book.rb'
 
 
 
+#  object_book.book_info = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
+
