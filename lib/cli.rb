@@ -65,7 +65,7 @@ class CLI
             sorted_books[0..9].each.with_index do |x, index|  # shows  10 books
               binding.pry
 
-              puts "#{index + 1}. #{x.book_name} - #{x.genre.name}"
+              puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
             puts ""
             end
           
@@ -75,7 +75,7 @@ class CLI
            elsif input == "more"
 
                sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
-                puts "#{index + 10}. #{x.book_name} - #{x.genre.name}"
+                puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
               puts ""
               # you can add another layer if needed.
               end
