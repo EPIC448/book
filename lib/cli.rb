@@ -73,12 +73,13 @@ class CLI
 
 
            elsif input == "more"
-
+                # until genre < 10
                sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
                 puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
               puts ""
               # you can add another layer if needed.
-              end
+               end
+              
 
                puts " Type Back to go back to select genre to view it book "
 

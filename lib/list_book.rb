@@ -31,7 +31,8 @@ class BookModel
               
        #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
        # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
-        object_book.book_info = url.css("#content_inner > article > p").text
+        
+      #  what is needed  # object_book.book_info = url.css("#content_inner > article > p").text
 
         object_book.save
        end
