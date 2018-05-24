@@ -35,7 +35,7 @@ class BookModel
       object_book.book_info = url.css("#content_inner > article > p").text #keep
 
        object_book.save
-       end
+         end
 
        end
       
