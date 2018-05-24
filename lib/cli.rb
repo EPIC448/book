@@ -60,29 +60,31 @@ class CLI
         genre
 
           if genre
+
           #if sorted_book is greater than 10
             sorted_books = genre.books.sort_by{|genre|genre.book_name}
-            sorted_books[0..9].each.with_index do |x, index|  # shows  10 books
-              binding.pry
 
-              puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+            # sorted_books[0..11].each.with_index do |x, index|  # shows  10 books
+              sorted_books.each.with_index do |x, index|  # shows  10 books
+
+            puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
             puts ""
             end
           
             puts " Type More to see the next 10 books"
 
-
            elsif input == "more"
-                # until genre < 10
+            #  why is genre return nil??
+
+              #  if genre >= 11
+                
                sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
-                puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+              puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
               puts ""
               # you can add another layer if needed.
                end
               
-
                puts " Type Back to go back to select genre to view it book "
-
 
               elsif input == "back"
                 call
@@ -91,6 +93,7 @@ class CLI
 
               puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre) "
               puts ""
+            #  end
             end     
           end #end the While input sentance
         end

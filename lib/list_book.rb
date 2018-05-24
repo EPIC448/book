@@ -21,7 +21,7 @@ class BookModel
        data = doc.search ("h3 a")
        data_genre = doc.search("h1").text  #itereate through data.... 
        data.map do |book| #get all books
-       url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
+        url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
 
 
        object_book = BookModel.new
@@ -32,9 +32,9 @@ class BookModel
        #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
        # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
         
-      #  what is needed  # object_book.book_info = url.css("#content_inner > article > p").text
+      object_book.book_info = url.css("#content_inner > article > p").text #keep
 
-        object_book.save
+       object_book.save
        end
 
        end
