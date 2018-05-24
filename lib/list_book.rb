@@ -7,7 +7,9 @@ class BookModel
     attr_accessor :book_name,:book_info
     attr_reader :genre
 
-    
+    # Warning... IT work.. IT takes long to load
+
+
     def self.scrape_books
         genres = Genre.all
         genres.each do |each_genre|

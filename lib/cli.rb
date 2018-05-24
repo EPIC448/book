@@ -1,6 +1,6 @@
 
 # require 'colorize'
-# Worryin... IT work.. IT takes long to load
+# Warning... IT work.. IT takes long to load
 
 class CLI
    
@@ -36,6 +36,8 @@ class CLI
         # goodbye
       end
      
+# Warning... IT work.. IT takes long to load
+
   
      def genre_list
             Genre.all.uniq.each_with_index do |genre, index|
@@ -60,39 +62,38 @@ class CLI
         genre  = Genre.find_by_name (input)     
         genre
 
-        if genre
+            if genre
 
-            sorted_books = genre.books.sort_by{|genre|genre.book_name}
-             sorted_books[0..11].each.with_index do |x, index|  # shows  10 books
-            puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
-            puts ""
-            end
-          
-            puts " Type More to see the next 10 books"
+                    sorted_books = genre.books.sort_by{|genre|genre.book_name}
+                    sorted_books[0..11].each.with_index do |x, index|  # shows  10 books
+                    puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                    puts ""
+                    end
+                  
+                    puts " Type More to see the next 10 books"
 
-           elsif input == "more"
-            #  why is genre return nil??
+            elsif input == "more"
+                    # sorted_books > 11 
+                    binding.pry
+                  sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
+                  puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                  puts ""
+                  # you can add another layer if needed.               
+                  end
+                      
+                      puts " Type Back to go back to select genre to view it book "
 
-              #  if genre >= 11
-                
-              sorted_books[10..20].each.with_index do |x, index|  # shows  20 books
-              puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
-              puts ""
-              # you can add another layer if needed.
-               end
-              
-               puts " Type Back to go back to select genre to view it book "
+            elsif input == "back"
+                call
 
-               elsif input == "back"
-                 call
-
-              else
-
+            else
               puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre)"
               puts ""
-             end
-            # end  
-          end #end the While input sentance
+
+              end #end of if statement
+                      
+           end #end the While input sentance
+           
         end
 
 
@@ -100,4 +101,5 @@ class CLI
       puts 'see you tomorrow'
     end
 
-  end    
+
+  end   

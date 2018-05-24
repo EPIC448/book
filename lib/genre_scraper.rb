@@ -21,6 +21,8 @@ class Genre
           genre
         end
     end
+# Warning... IT work.. IT takes long to load
+
 
     def save
      @@all_genre <<  self
