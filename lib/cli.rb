@@ -33,7 +33,6 @@ class CLI
             end
         end
 
-        # goodbye
       end
      
 # Warning... IT work.. IT takes long to load
@@ -73,13 +72,18 @@ class CLI
                     puts " Type More to see the next 10 books"
 
             elsif input == "more"
-                    # sorted_books > 11 
-                    binding.pry
-                  sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
-                  puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                sorted_books.collect do |x|  #x is an array
+
+                    # if x > 11 
+                   sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
+                    puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+
                   puts ""
-                  # you can add another layer if needed.               
-                  end
+                  # you can add another layer if needed.
+                  
+                   end #end do
+                #  end #ends if statment
+                end #end for do statment
                       
                       puts " Type Back to go back to select genre to view it book "
 
@@ -93,7 +97,7 @@ class CLI
               end #end of if statement
                       
            end #end the While input sentance
-           
+
         end
 
 
