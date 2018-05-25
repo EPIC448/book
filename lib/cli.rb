@@ -72,26 +72,34 @@ class CLI
                     puts " Type More to see the next 10 books"
 
             elsif input == "more"
-                sorted_books.collect do |x|  #x is an array
+             num_of_books = sorted_books.length
+                # sorted_books.collect do |x|  #x is an array
+                        # :idea ... if convert "input"== string.... thus .to_i... (.length).
 
-                    # if x > 11 
-                   sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
+                 if num_of_books > 11 
+
+                    sorted_books[11..20].each.with_index do |x, index|  # shows  20 books
                     puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                    end #end of do statment for this block
 
-                  puts ""
+                      puts ""
                   # you can add another layer if needed.
+                  else
                   
-                   end #end do
-                #  end #ends if statment
-                end #end for do statment
+                    list_book_genre
+
+                 end #ends if statment for num_of_books
+
+
+                  #end for do statment
                       
-                      puts " Type Back to go back to select genre to view it book "
+             puts " Type Back to go back to select genre to view it book "
 
             elsif input == "back"
                 call
 
             else
-              puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(to back space to Genre)"
+              puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(for main menu)"
               puts ""
 
               end #end of if statement
