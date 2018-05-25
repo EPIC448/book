@@ -75,16 +75,16 @@ class CLI
              num_of_books = sorted_books.length
                 
 
-                 if num_of_books > 11 
+                 if num_of_books > 11
 
-                    sorted_books[11..20].each.with_index do |x, index|  # shows  20 books
+                    sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
                     puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     end #end of do statment for this block
 
                       puts ""
                   # you can add another layer if needed.
                   else
-                    puts "no more books here"
+                    puts ">>>>>>>>NO MORE BOOKS<<<<<<"
  
                     puts ""
                     list_book_genre
@@ -93,7 +93,9 @@ class CLI
 
 
                   #end for do statment
-                      
+
+             puts ">>>>>>>>NO MORE BOOKS<<<<<<"
+               puts""
              puts " Type Back to go back to select genre to view it book "
 
             elsif input == "back"
