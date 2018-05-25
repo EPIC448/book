@@ -73,8 +73,7 @@ class CLI
 
             elsif input == "more"
              num_of_books = sorted_books.length
-                # sorted_books.collect do |x|  #x is an array
-                        # :idea ... if convert "input"== string.... thus .to_i... (.length).
+                
 
                  if num_of_books > 11 
 
@@ -85,7 +84,9 @@ class CLI
                       puts ""
                   # you can add another layer if needed.
                   else
-                  
+                    puts "no more books here"
+ 
+                    puts ""
                     list_book_genre
 
                  end #ends if statment for num_of_books
