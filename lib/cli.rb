@@ -94,12 +94,12 @@ class CLI
 
                   #end for do statment
 
-             puts ">>>>>>>>NO MORE BOOKS<<<<<<"
+             puts ">>>>>>>>NO MORE BOOKS<<<<<< Type back to navigate to choice a book menu"
                puts""
              puts " Type Back to go back to select genre to view it book "
 
             elsif input == "back"
-                call
+              list_book_genre
 
             else
               puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(for main menu)"
