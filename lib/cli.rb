@@ -65,6 +65,7 @@ class CLI
 
                     sorted_books = genre.books.sort_by{|genre|genre.book_name}
                     sorted_books[0..11].each.with_index do |x, index|  # shows  10 books
+                      puts""
                     puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts ""
                     end
@@ -78,6 +79,7 @@ class CLI
                  if num_of_books > 11
 
                     sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
+                      puts""
                     puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     end #end of do statment for this block
 
@@ -102,7 +104,7 @@ class CLI
               list_book_genre
 
             else
-              puts "Not sure what you type. Please type More (to see the next 10 books) or Exit(for main menu)"
+              puts "Not sure what you type. Please type Exit(for main menu)"
               puts ""
 
               end #end of if statement
