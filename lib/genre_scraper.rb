@@ -1,14 +1,14 @@
 class Genre
 
     attr_accessor  :name, :url, :books
-   @@all_genre = []
+    @@all_genre = []
 
  # focus of th song to genre relationship
  #genre has many books
 
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
-
+#doc is local variable.. local scoop
         doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
           genre = Genre.new
           genre.name = container.text.strip     #works perfect

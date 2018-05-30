@@ -3,10 +3,6 @@
 require "bundler/setup"
 require './lib/book'
 
-def reload!
-  load './lib/book'
-end
-
 CLI.new.call
 #   patternes of how you solve my CLI
 
