@@ -49,7 +49,7 @@ class CLI
       def list_book_genre
         puts ""
         puts ""
-        puts "Type Desired genre (i.e art) or more to see the next 10 books..."
+        puts "Type Desired genre (i.e art) or more to see the next 10 books.. or Exit to go back to Previous menu."
         puts ""
         puts ""
         input = nil
@@ -66,44 +66,31 @@ class CLI
                       puts""
                     puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts ""
-                    puts " Type More to see the next 10 books"
-
                     end
                   
+                puts "Type More to view More books"
 
             elsif input == "more"
              num_of_books = sorted_books.length
 
-                
+                 if num_of_books >= 11
 
-                 if num_of_books > 11
-
-                    sorted_books[12..20].each.with_index do |x, index|  # shows  20 books
+                    sorted_books[12..21].each.with_index do |x, index|  # shows  20 books
                       puts""
-                    puts "#{index + 10}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                    puts "#{index + 12}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     end #end of do statment for this block
-
+                    
                       puts ""
                   # you can add another layer if needed.
-                  else
-                    puts ">>>>>>>>NO MORE BOOKS<<<<<<"
- 
-                    puts ""
-                    list_book_genre
-
-                 end #ends if statment for num_of_books
-
-
-                  #end for do statment
-
-             puts ">>>>>>>>NO MORE BOOKS<<<<<<  Type Back to go back to select genre to view it book "
-               puts""
+                  else 
+                     puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go back to previous meun "                                       
+                  end #ends if statment for num_of_books
 
             elsif input == "back"
               list_book_genre
 
             else
-              puts "Not sure what you type. Please type Exit(for main menu)"
+              puts "Not sure what you type, Type Exit to go back to main menu"
               puts ""
 
               end #end of if statement
