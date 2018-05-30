@@ -66,12 +66,14 @@ class CLI
                       puts""
                     puts "#{index + 1}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts ""
+                    puts " Type More to see the next 10 books"
+
                     end
                   
-                    puts " Type More to see the next 10 books"
 
             elsif input == "more"
              num_of_books = sorted_books.length
+
                 
 
                  if num_of_books > 11
