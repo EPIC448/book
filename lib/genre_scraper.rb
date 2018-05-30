@@ -9,11 +9,10 @@ class Genre
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
 
-        doc.search("ul.nav.nav-list ul a").map do |container|
+        doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
           genre = Genre.new
           genre.name = container.text.strip     #works perfect
           genre.url = "http://books.toscrape.com/#{container.values.join}" 
-          # doc.search("div.page_inner").children
           #works perfect
           genre.books = [ ]
           genre.save     # configure it no to duplicate
@@ -33,13 +32,14 @@ class Genre
       @@all_genre
     end
 
-#  we connect book to genre  /this not a clas method.
+#  we connect book to genre  /this not a class method. Built after the BookModel is created
+    
     def add_book(book)
       @books << book unless @books.include?(book)
       book.genre = self if book.genre != self
     end
 
-            #relationship that genre has many book
+     #relationship that genre has many book
 
 
     def self.find_by_name (name)

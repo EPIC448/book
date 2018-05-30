@@ -17,19 +17,18 @@ class BookModel
         content  
       # music labray will help with this.
         #each content is already iterated over.
-       #need an if else statment.. here...
       
        doc = Nokogiri::HTML(open(content))   #note content URL link
        data = doc.search ("h3 a")
        data_genre = doc.search("h1").text  #itereate through data.... 
        data.map do |book| #get all books
+
         url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
 
-
        object_book = BookModel.new
-       object_book.genre = Genre.find_by_name(data_genre) # in Genre class
-       object_book.genre.add_book(object_book)
-       object_book.book_name = book.text #keep
+       object_book.genre = Genre.find_by_name(data_genre) # in Genre class => "Travel"
+       object_book.genre.add_book(object_book) #chain the ... add book method from genre_scraper
+       object_book.book_name = book.text 
               
        #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
        # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
@@ -55,8 +54,6 @@ class BookModel
 
   # >>>>>>>>>>>>>>>>
     # We need to buid a relationship in with Genre knows it had many books
-    #we can say 
-    #genre.bookmodel.
     # <<<<<<<<<<<
 
   def self.create(name)
@@ -65,7 +62,8 @@ class BookModel
     bookmodel
   end
 
- # assiging book here to be read
+ # creation of add_book(book) in genre_scraper
+
   def genre=(genre)  #list of books has one genre
     @genre = genre
     genre.add_book(self)

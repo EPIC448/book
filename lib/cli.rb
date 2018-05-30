@@ -38,8 +38,7 @@ class CLI
   
      def genre_list
             Genre.all.uniq.each_with_index do |genre, index|
-            puts "#{index + 1}. #{genre.name}"  #shows only genre
-            
+            puts "#{index + 1}. #{genre.name}"  #shows only genre           
             end
                   
       end
@@ -56,7 +55,7 @@ class CLI
           while input != "exit"
     
         input = gets.strip.downcase
-        genre  = Genre.find_by_name (input)     
+        genre  = Genre.find_by_name (input) #in genre_scraper     
         genre
 
             if genre
@@ -81,10 +80,9 @@ class CLI
                     end #end of do statment for this block
                     
                       puts ""
-                  # you can add another layer if needed.
-                  else 
+                    else 
                      puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go back to previous meun "                                       
-                  end #ends if statment for num_of_books
+                    end #ends if statment for num_of_books
 
             elsif input == "back"
               list_book_genre
