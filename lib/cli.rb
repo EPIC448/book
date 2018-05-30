@@ -14,11 +14,9 @@ class CLI
             puts ""
             puts "Welcome to the Book Scraper!" 
             puts ""
-            puts "Type Genre to see list of genre"
+            puts "Type Genre to see the list of genres"
             puts ""
-            puts "Type Genre to see the list of genres again"
-            puts ""
-            puts "Type Books to see the list of books in a genre"
+            puts "Type Books to be prompted for books in a genre"
             puts ""
             puts "Type Exit to exit the program"
 
@@ -96,9 +94,8 @@ class CLI
 
                   #end for do statment
 
-             puts ">>>>>>>>NO MORE BOOKS<<<<<< Type back to navigate to choice a book menu"
+             puts ">>>>>>>>NO MORE BOOKS<<<<<<  Type Back to go back to select genre to view it book "
                puts""
-             puts " Type Back to go back to select genre to view it book "
 
             elsif input == "back"
               list_book_genre
