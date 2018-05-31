@@ -32,7 +32,7 @@ class Genre
       @@all_genre
     end
 
-#  we connect book to genre  /this not a class method. Built after the BookModel is created
+#  we connect book to genre/this not a class method. Built after the BookModel is created
     
     def add_book(book)
       @books << book unless @books.include?(book)

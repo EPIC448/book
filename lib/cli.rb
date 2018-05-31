@@ -27,7 +27,7 @@ class CLI
             elsif input == "books"
               list_book_genre
             else
-              "not sure what you type. Please type Exit or Type of the suggestion"
+              "not sure what you type. Please type exit or Type of the suggestion"
             end
         end
 
@@ -47,7 +47,7 @@ class CLI
 
       def list_book_genre
         puts ""
-        puts "Type Desired genre (i.e art) or more to see the next 10 books.. or Exit to go back to Previous menu."
+        puts "Type Desired genre (i.e art) or more to see the next 10 books.. or exit to go back to Previous menu."
         puts ""
         input = nil
           while input != "exit"
@@ -75,7 +75,8 @@ class CLI
                     sorted_books[12..21].each.with_index do |x, index|  # shows  20 books
                       puts""
                     puts "#{index + 12}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
-                    end #end of do statment for this block
+                    puts ""
+                  end #end of do statment for this block
                     
                   puts " Type 10_more to see the next ten"
 
