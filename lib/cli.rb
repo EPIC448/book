@@ -80,14 +80,14 @@ class CLI
                     
                   puts " Type 10_more to see the next ten"
 
-                elsif input == "10_more" && num_of_books.between?(20, 33) 
+              elsif input == "10_more" && num_of_books.between?(20, 33) 
 
                         sorted_books[13..32].each.with_index do |x, index|  # shows  20 books
                           puts""
 
                         puts "#{index + 13}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                         end
-                  else 
+                 else 
                      puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go back to previous meun "                                       
                   end #ends if statment for num_of_books
 
