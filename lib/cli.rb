@@ -53,7 +53,7 @@ class CLI
           while input != "exit"
     
         input = gets.strip.downcase
-        genre  = Genre.find_by_name (input) #in genre_scraper     
+        genre  = Genre.find_by_name (input) #in genre_scraper  
         genre
 
             if genre
@@ -88,7 +88,7 @@ class CLI
                         puts "#{index + 13}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                         end
                  else 
-                     puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go back to previous meun "                                       
+                     puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go return to previous meun "                                       
                   end #ends if statment for num_of_books
 
             elsif input == "back"

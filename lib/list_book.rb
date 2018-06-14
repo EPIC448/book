@@ -11,6 +11,7 @@ class BookModel
 
 
     def self.scrape_books
+
         genres = Genre.all
         genres.each do |each_genre|
         content = each_genre.url
@@ -25,7 +26,7 @@ class BookModel
 
         url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
 
-       object_book = BookModel.new
+       object_book = BookModel.new   #Instantiation
        object_book.genre = Genre.find_by_name(data_genre) # in Genre class => "Travel"
        object_book.genre.add_book(object_book) #chain the ... add book method from genre_scraper
        object_book.book_name = book.text 
@@ -56,7 +57,7 @@ class BookModel
     # We need to buid a relationship in with Genre knows it had many books
     # <<<<<<<<<<<
 
-  def self.create(name)
+  def self.create(name)   #Instantiation
     bookmodel = BookModel.new(name)
     bookmodel.save
     bookmodel
