@@ -8,7 +8,15 @@ class BookModel
     attr_reader :genre
 
     # Warning... IT work.. IT takes long to load
+    def initialize(book_name = nil, book_info= nil, book) onnect your self.scrape_genre... initailize
 
+      @book_name = book_name
+      @book_info = book_info
+      
+      self.save
+      
+     end
+    # connect your self.scrape_books... initailize
 
     def self.scrape_books
 
@@ -18,6 +26,7 @@ class BookModel
         content  
       # music labray will help with this.
         #each content is already iterated over.
+
       
        doc = Nokogiri::HTML(open(content))   #note content URL link
        data = doc.search ("h3 a")

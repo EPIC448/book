@@ -6,6 +6,16 @@ class Genre
  # focus of th song to genre relationship
  #genre has many books
 
+   def initialize(name = nil, url = nil, book = nil)   #connect your self.scrape_genre... initailize
+
+    @name = name
+    @url = url
+    @books = []
+    
+    self.save
+    
+   end
+
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
 #doc is local variable.. local scoop
