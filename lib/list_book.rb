@@ -8,7 +8,8 @@ class BookModel
     attr_reader :genre
 
     # Warning... IT work.. IT takes long to load
-    def initialize(book_name = nil, book_info= nil, book) onnect your self.scrape_genre... initailize
+
+    def initialize(book_name = nil, book_info= nil) #connect your self.scrape_genre... initailize
 
       @book_name = book_name
       @book_info = book_info
@@ -20,32 +21,30 @@ class BookModel
 
     def self.scrape_books
 
-        genres = Genre.all
-        genres.each do |each_genre|
-        content = each_genre.url
-        content  
-      # music labray will help with this.
-        #each content is already iterated over.
-
-      
-       doc = Nokogiri::HTML(open(content))   #note content URL link
-       data = doc.search ("h3 a")
-       data_genre = doc.search("h1").text  #itereate through data.... 
-       data.map do |book| #get all books
-
-        url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
-
-       object_book = BookModel.new   #Instantiation
-       object_book.genre = Genre.find_by_name(data_genre) # in Genre class => "Travel"
-       object_book.genre.add_book(object_book) #chain the ... add book method from genre_scraper
-       object_book.book_name = book.text 
+        Genre.all.each do |genre|
+            content = genre.url
               
-       #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
-       # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
-        
-      object_book.book_info = url.css("#content_inner > article > p").text #keep
+          # music labray will help with this.
+            #each content is already iterated over.
 
-       object_book.save
+          doc = Nokogiri::HTML(open(content))   #note content URL link
+          books = doc.search ("h3 a")
+          
+          # books_genre = doc.search("h1").text  #itereate through data.... 
+          books.map do |book| #get all books
+
+                url = Nokogiri::HTML(open("http://books.toscrape.com/catalogue/#{book.values.first.gsub('../','')}"))
+
+                book_name = book.text
+                book_info = url.css("#content_inner > article > p").text #keep
+ 
+                        
+                #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
+                # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
+                
+                new_book = BookModel.create(book_name, book_info)
+                genre.add_book(new_book) #chain the ... add book method from genre_scraper
+
          end
 
        end
@@ -66,11 +65,11 @@ class BookModel
     # We need to buid a relationship in with Genre knows it had many books
     # <<<<<<<<<<<
 
-  def self.create(name)   #Instantiation
-    bookmodel = BookModel.new(name)
-    bookmodel.save
-    bookmodel
-  end
+  # def self.create(name)   #Instantiation
+  #   bookmodel = BookModel.new(name)
+  #   bookmodel.save
+  #   bookmodel
+  # end
 
  # creation of add_book(book) in genre_scraper
 

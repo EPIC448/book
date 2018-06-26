@@ -20,6 +20,7 @@ class Genre
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
 #doc is local variable.. local scoop
         doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
+          
           genre = Genre.new
           genre.name = container.text.strip     #works perfect
           genre.url = "http://books.toscrape.com/#{container.values.join}" 
