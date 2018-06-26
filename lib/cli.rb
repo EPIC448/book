@@ -76,18 +76,18 @@ class CLI
                       puts""
                     puts "#{index + 12}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts ""
-                  end #end of do statment for this block
+                    end #end of do statment for this block
                     
-                  puts " Type 10_more to see the next ten"
+                  puts " Type see_more to see the next ten"
 
-              elsif input == "10_more" && num_of_books.between?(20, 33) 
+                 elsif input == "see_more" && num_of_books.between?(20, 33) 
 
                         sorted_books[13..32].each.with_index do |x, index|  # shows  20 books
                           puts""
 
                         puts "#{index + 13}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                         end
-                 else 
+                else 
                      puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go return to previous meun "                                       
                   end #ends if statment for num_of_books
 

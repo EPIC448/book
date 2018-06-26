@@ -66,12 +66,6 @@ class BookModel
     # We need to buid a relationship in with Genre knows it had many books
     # <<<<<<<<<<<
 
-  # def self.create(name)   #Instantiation
-  #   bookmodel = BookModel.new(name)
-  #   bookmodel.save
-  #   bookmodel
-  # end
-
  # creation of add_book(book) in genre_scraper
 
   def genre=(genre)  #list of books has one genre
