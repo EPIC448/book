@@ -42,7 +42,8 @@ class BookModel
                 #you can manully add the site url that you need (i.e "http://books.toscrape.com/catalogue/").
                 # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
                 
-                new_book = BookModel.create(book_name, book_info)
+                new_book = BookModel.new(book_name, book_info)
+                new_book.save
                 genre.add_book(new_book) #chain the ... add book method from genre_scraper
 
          end

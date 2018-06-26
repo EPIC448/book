@@ -8,27 +8,25 @@ class Genre
 
    def initialize(name = nil, url = nil, book = nil)   #connect your self.scrape_genre... initailize
 
-    @name = name
-    @url = url
-    @books = []
-    
-    self.save
-    
+        @name = name
+        @url = url
+        @books = []
+        self.save  
    end
 
  def self.scrape_genres
         doc = Nokogiri::HTML(open("http://books.toscrape.com"))
-#doc is local variable.. local scoop
+     #doc is local variable.. local scoop
         doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
           
-          genre = Genre.new
-          genre.name = container.text.strip     #works perfect
-          genre.url = "http://books.toscrape.com/#{container.values.join}" 
+          name = container.text.strip     #works perfect
+          url = "http://books.toscrape.com/#{container.values.join}" 
           #works perfect
-          genre.books = [ ]
-          genre.save     # configure it no to duplicate
-
+          books = [ ]
+          genre = Genre.new(name,url,books)
+          genre.save
           genre
+          
         end
     end
 # Warning... IT work.. IT takes long to load
