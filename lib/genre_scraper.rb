@@ -6,7 +6,7 @@ class Genre
  # focus of th song to genre relationship
  #genre has many books
 
-   def initialize(name = nil, url = nil, book = nil)   #connect your self.scrape_genre... initailize
+   def initialize(name = nil, url = nil, books = nil)   #connect your self.scrape_genre... initailize
 
         @name = name
         @url = url
