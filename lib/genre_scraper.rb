@@ -1,59 +1,22 @@
-class Genre
+class Genre_Scraper
 
-    attr_accessor  :name, :url, :books
-    @@all_genre = []   #class variable
 
- # focus of th song to genre relationship
- #genre has many books
 
-   def initialize(name = nil, url = nil, books = nil)   #connect your self.scrape_genre... initailize
-
-        @name = name
-        @url = url
-        @books = []
-        self.save  
+   def self.scrape_genres
+    doc = Nokogiri::HTML(open("http://books.toscrape.com"))
+    #doc is local variable.. local scoop
+    doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
+      
+      name = container.text.strip     #works perfect
+      url = "http://books.toscrape.com/#{container.values.join}" 
+      #works perfect
+      books = [ ]
+      genre = Genre.new(name,url,books)
+      genre.save
+      genre
+      
+    end
    end
-
- def self.scrape_genres
-        doc = Nokogiri::HTML(open("http://books.toscrape.com"))
-     #doc is local variable.. local scoop
-        doc.search("ul.nav.nav-list ul a").map do |container| # array of hashes
-          
-          name = container.text.strip     #works perfect
-          url = "http://books.toscrape.com/#{container.values.join}" 
-          #works perfect
-          books = [ ]
-          genre = Genre.new(name,url,books)
-          genre.save
-          genre
-          
-        end
-    end
 # Warning... IT work.. IT takes long to load
-
-
-    def save
-     @@all_genre <<  self
-  
-    end
-
-    def self.all
-      @@all_genre
-    end
-
-#  we connect book to genre/this not a class method. Built after the BookModel is created
-    
-    def add_book(book)  #line 60-71 list_book
-      @books << book unless @books.include?(book)
-      book.genre = self if book.genre != self
-    end
-
-     #relationship that genre has many book
-
-
-    def self.find_by_name (name)
-        self.all.find {|x| x.name.downcase == name.downcase}
-
-    end
 
 end

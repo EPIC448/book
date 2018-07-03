@@ -5,9 +5,8 @@
 class CLI
    
      def call   
-      Genre.scrape_genres
-
-      BookModel.scrape_books
+      Genre_Scraper.scrape_genres
+      Book_Scraper.scrape_books
 
       input = nil
         while input != "exit"
@@ -82,10 +81,10 @@ class CLI
 
                  elsif input == "see_more" && num_of_books.between?(20, 33) 
 
-                        sorted_books[13..32].each.with_index do |x, index|  # shows  20 books
+                        sorted_books[22..32].each.with_index do |x, index|  # shows  20 books
                           puts""
 
-                        puts "#{index + 13}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
+                        puts "#{index + 22}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                         end
                 else 
                      puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< Type Back to go return to previous meun "                                       
