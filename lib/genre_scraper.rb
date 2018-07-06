@@ -12,7 +12,7 @@ class Genre_Scraper
       #works perfect
       books = [ ]
       genre = Genre.new(name,url,books)
-      genre.save
+      # genre.save
       genre
       
     end

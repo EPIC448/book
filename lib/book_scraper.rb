@@ -1,8 +1,8 @@
 class Book_Scraper
 
-    def self.scrape_books
+    def self.scrape_books(genre)
 
-        Genre.all.each do |genre|
+        # Genre.all.each do |genre|
             content = genre.url
               
             #each content is already iterated over.
@@ -23,13 +23,13 @@ class Book_Scraper
                 # used Gsub to remove ('../', '') in  ../../../its-only-the-himalayas_981/index.html" 
                 
                 new_book = BookModel.new(book_name, book_info)
-                new_book.save
+                # new_book.save
                 genre.add_book(new_book) #chain the ... add book method from genre_scraper
 
          end
 
-       end
+    #    end
       
-    end
+     end
 
 end

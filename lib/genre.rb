@@ -5,12 +5,13 @@ class Genre
 
  # focus of th song to genre relationship
  #genre has many books
+#  @ sign make what comes after it and instance varible.
 
    def initialize(name = nil, url = nil, books = nil)   #connect your self.scrape_genre... initailize
 
         @name = name
         @url = url
-        @books = []
+        @books = books
         self.save  
    end
 

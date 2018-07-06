@@ -11,7 +11,7 @@ class BookModel
 
     def initialize(book_name = nil, book_info= nil) #connect your self.scrape_genre... initailize
 
-      @book_name = book_name
+      @book_name = book_name  
       @book_info = book_info
       
       self.save
