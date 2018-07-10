@@ -6,7 +6,6 @@ class CLI
    
      def call   
       Genre_Scraper.scrape_genres
-      # Book_Scraper.scrape_books
 
       input = nil
         while input != "exit"
@@ -25,6 +24,9 @@ class CLI
               genre_list
             elsif input == "books"
               list_book_genre
+            elsif input == "exit"
+              goodbye
+              puts ""
             else
               "not sure what you type. Please type exit or Type of the suggestion"
             end
@@ -46,49 +48,59 @@ class CLI
 
       def list_book_genre
         puts ""
-        puts "Type Desired genre (i.e art) or more to see the next 10 books.. or exit to go back to Previous menu."
+        puts "Type Desired genre (i.e art) or more to see the next 10 books.. or menu to go back to Previous menu."
         puts ""
         input = nil
         while input != "exit"
-    
+        
         input = gets.strip.downcase
         
+         
+
         if  Genre.find_by_name (input) #in genre_scraper  
-          genre =  Genre.find_by_name (input)
-          if genre.books.length == 0 
-            Book_Scraper.scrape_books(genre)
+          @genre =  Genre.find_by_name (input)
+          if @genre.books.length == 0 
+            Book_Scraper.scrape_books(@genre)
           end
 
-          sorted_books = genre.books.sort_by{|genre|genre.book_name}
-                    sorted_books[0..9].each.with_index(1) do |x, index|  # shows  10 books
+          @sorted_books = @genre.books.sort_by{|genre|genre.book_name}
+        
+                    @sorted_books[0..9].each.with_index(1) do |x, index|  # shows  10 books
                     puts""
                     puts "#{index}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts ""
                     end
 
                     list_book_genre
+                    
          
 
         elsif input == "more"
-          binding.pry
-          num_of_books = sorted_books.length
+          Genre
+            # sorted_books is nil...?
+          num_of_books = @sorted_books.length
 
                  if num_of_books >= 11 && num_of_books < 20
 
-                    sorted_books[10..19].each.with_index(11) do |x, index|  # shows  20 books
+                    @sorted_books[10..19].each.with_index(11) do |x, index|  # shows  20 books
                       puts""
                     puts "#{index}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts "" 
+                      
                     end
                     list_book_genre
 
-                  else 
-                        puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<<"
-                        list_book_genre
-                  end
+                else 
+                    puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<<  Type exit" 
+                end
+
+        elsif input == "menu"
+          call
+
 
         elsif input == "exit"
-           break
+           goodbye
+          exit
            
         else
           puts "I don't understand what you typed"
@@ -100,7 +112,11 @@ class CLI
 
 
     def goodbye
-      puts 'see you tomorrow'
+      puts ""
+      puts 'SEE YOU TO TOMOOROW or C U 2 morrow :)'
+      puts ""
+
+       exit
     end
 
 
