@@ -17,6 +17,7 @@ class CLI
             puts "Type Books to be prompted for books in a genre"
             puts ""
             puts "Type exit to exit the program"
+            puts ""
 
             input = gets.strip.downcase
 
@@ -91,7 +92,7 @@ class CLI
                     list_book_genre
 
                 else 
-                    puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<<  Type exit" 
+                    puts ">>>>>>>>SORRY! NO MORE BOOKS<<<<<< >>>>> type Menu to see Previous menu<<<<<<<," 
                 end
 
         elsif input == "menu"
