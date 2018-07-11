@@ -77,13 +77,12 @@ class CLI
          
 
         elsif input == "more"
-          Genre
-            # sorted_books is nil...?
+          
           num_of_books = @sorted_books.length
 
-                 if num_of_books >= 11 && num_of_books < 20
+                 if num_of_books >= 11 && num_of_books <= 20   # check total books
 
-                    @sorted_books[10..19].each.with_index(11) do |x, index|  # shows  20 books
+                    @sorted_books[10..19].each.with_index(11) do |x, index|  # checking the index...
                       puts""
                     puts "#{index}. #{x.book_name} - #{x.genre.name} - #{x.book_info}"
                     puts "" 
