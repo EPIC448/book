@@ -29,9 +29,10 @@ class Genre
 
 #  we connect book to genre/this not a class method. Built after the BookModel is created
     
-    def add_book(book)  #line 60-71 list_book
+    def add_book(book)  #look at Book_scraper line 27
       @books << book unless @books.include?(book)
-      book.genre = self if book.genre != self
+      binding.pry
+      book.genre = self if book.genre != self # checking that book is not duplicated
     end
 
      #relationship that genre has many book

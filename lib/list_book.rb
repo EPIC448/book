@@ -4,8 +4,7 @@ class BookModel
     #dont for get to add "self" to your methods.
     @@all = []
 
-    attr_accessor :book_name,:book_info
-    attr_reader :genre
+    attr_accessor :book_name,:book_info, :genre
 
     # Warning... IT work.. IT takes long to load
 
@@ -36,10 +35,13 @@ class BookModel
 
  # creation of add_book(book) in genre_scraper
 
-  def genre=(genre)  #list of books has one genre
-    @genre = genre
-    genre.add_book(self)
-  end
+#  >>>>> 
+    # turn this to attr_accessors
+# def genre=(genre)  #list of books has one genre
+#   #   @genre = genre
+#   #   # genre.add_book(self)
+#   # end   
+#   <<<<<<<<
 
 
     def self.find_by_name(name)
