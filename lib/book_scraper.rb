@@ -25,7 +25,7 @@ class Book_Scraper
                 new_book = BookModel.new(book_name, book_info)
                 # new_book.save
                 genre.add_book(new_book) #chain the ... add book method from genre_scraper
-
+binding.pry
          end
 
     #    end

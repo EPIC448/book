@@ -31,7 +31,6 @@ class Genre
     
     def add_book(book)  #look at Book_scraper line 27
       @books << book unless @books.include?(book)
-      binding.pry
       book.genre = self if book.genre != self # checking that book is not duplicated
     end
 
